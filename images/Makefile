@@ -1,8 +1,11 @@
 CONVERT=convert 
-SOURCES=sync.svg async.svg
+SOURCES=sync.svg threaded.svg
 IMAGES=$(SOURCES:.svg=.png)
 
 all: $(SOURCES) $(IMAGES)
 
 %.png : %.svg
 	$(CONVERT) $< $@
+
+clean:
+	rm *.png
