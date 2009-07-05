@@ -1,0 +1,233 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="256.53622"
+   height="360.67371"
+   id="svg2"
+   sodipodi:version="0.32"
+   inkscape:version="0.46"
+   sodipodi:docname="block.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   version="1.0">
+  <defs
+     id="defs4">
+    <marker
+       inkscape:stockid="Arrow1Mstart"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mstart"
+       style="overflow:visible">
+      <path
+         id="path4011"
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(0.4,0,0,0.4,4,0)" />
+    </marker>
+    <marker
+       inkscape:stockid="Arrow1Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow1Mend"
+       style="overflow:visible">
+      <path
+         id="path3187"
+         d="M 0,0 L 5,-5 L -12.5,0 L 5,5 L 0,0 z"
+         style="fill-rule:evenodd;stroke:#000000;stroke-width:1pt;marker-start:none"
+         transform="matrix(-0.4,0,0,-0.4,-4,0)" />
+    </marker>
+    <inkscape:perspective
+       sodipodi:type="inkscape:persp3d"
+       inkscape:vp_x="0 : 526.18109 : 1"
+       inkscape:vp_y="6.1230318e-14 : 1000 : 0"
+       inkscape:vp_z="744.09448 : 526.18109 : 1"
+       inkscape:persp3d-origin="372.04724 : 350.78739 : 1"
+       id="perspective10" />
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     gridtolerance="10000"
+     guidetolerance="10"
+     objecttolerance="10"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.7356407"
+     inkscape:cx="128.2681"
+     inkscape:cy="180.33685"
+     inkscape:document-units="px"
+     inkscape:current-layer="layer1"
+     showgrid="true"
+     inkscape:snap-global="false"
+     inkscape:window-width="1070"
+     inkscape:window-height="852"
+     inkscape:window-x="55"
+     inkscape:window-y="44"
+     showguides="true">
+    <inkscape:grid
+       type="xygrid"
+       id="grid2397"
+       visible="true"
+       enabled="true" />
+  </sodipodi:namedview>
+  <metadata
+     id="metadata7">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(-211.35366,-52.49804)">
+    <rect
+       style="fill:#0000ff;fill-rule:evenodd;stroke:#000000;stroke-width:0.17800596px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect2401"
+       width="19.954937"
+       height="120.04401"
+       x="271.14273"
+       y="52.715393" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="211.09766"
+       y="72.759392"
+       id="text2403"><tspan
+         sodipodi:role="line"
+         id="tspan2405"
+         x="211.09766"
+         y="72.759392">Task 1</tspan></text>
+    <rect
+       style="fill:#00ff00;fill-rule:evenodd;stroke:#000000;stroke-width:0.17804013px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect2383"
+       width="19.954966"
+       height="120.08995"
+       x="271.39871"
+       y="172.83118" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="211.35365"
+       y="192.83118"
+       id="text2385"><tspan
+         sodipodi:role="line"
+         id="tspan2387"
+         x="211.35365"
+         y="192.83118">Task 2</tspan></text>
+    <rect
+       style="fill:#ff0000;fill-rule:evenodd;stroke:#000000;stroke-width:0.17773573px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="rect2389"
+       width="19.88962"
+       height="120.07285"
+       x="271.35367"
+       y="293.01004" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="211.35365"
+       y="312.92114"
+       id="text2391"><tspan
+         sodipodi:role="line"
+         id="tspan2393"
+         x="211.35365"
+         y="312.92114">Task 3</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.88152552px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 451.35366,52.938803 L 451.35366,383.08288"
+       id="path2403" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="435.05737"
+       y="405.22025"
+       id="text3953"><tspan
+         sodipodi:role="line"
+         id="tspan3955"
+         x="435.05737"
+         y="405.22025">time</tspan></text>
+    <rect
+       style="fill:#666666"
+       id="rect2683"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="73.082878" />
+    <rect
+       style="fill:#666666"
+       id="rect3465"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="123.08288" />
+    <rect
+       style="fill:#666666"
+       id="rect3467"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="193.08289" />
+    <rect
+       style="fill:#666666"
+       id="rect3469"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="233.08289" />
+    <rect
+       style="fill:#666666"
+       id="rect3471"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="313.08289" />
+    <rect
+       style="fill:#666666"
+       id="rect3473"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="343.08289" />
+    <rect
+       style="fill:#666666"
+       id="rect3475"
+       width="20"
+       height="20"
+       x="271.35367"
+       y="383.08289" />
+    <text
+       xml:space="preserve"
+       style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="377.89673"
+       y="211.55859"
+       id="text3479"><tspan
+         sodipodi:role="line"
+         id="tspan3481"
+         x="377.89673"
+         y="211.55859">Waiting</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 160,150.82349 L 80,30.823486"
+       id="path4786"
+       transform="translate(211.35366,52.259392)" />
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.81769258px;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow1Mend);stroke-opacity:1"
+       d="M 371.44482,213.17404 L 291.32931,133.05515"
+       id="path5309" />
+  </g>
+</svg>
