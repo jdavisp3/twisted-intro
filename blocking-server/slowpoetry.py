@@ -61,6 +61,8 @@ def send_poetry(sock, poetry_file, num_bytes, delay):
             inputf.close()
             return
 
+        print 'Sending %d bytes' % len(bytes)
+
         try:
             sock.sendall(bytes)
         except socket.error:
