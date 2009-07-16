@@ -4,7 +4,20 @@ import optparse, os, socket, time
 
 
 def parse_args():
-    usage = "usage: %prog [options] poetry-file"
+    usage = """usage: %prog [options] poetry-file
+
+This is the Slow Poetry Server, blocking edition.
+Run it like this:
+
+  python slowpoetry.py <path-to-poetry-file>
+
+If you are in the base directory of the twisted-intro package,
+you could run it like this:
+
+  python blocking-server/slowpoetry.py poetry/ecstasy.txt
+
+to serve up John Donne's Ecstasy, which I know you want to do.
+"""
 
     parser = optparse.OptionParser(usage)
 
@@ -76,7 +89,7 @@ def main():
 
     sock.listen(5)
 
-    print 'Serving %s on %s.' % (poetry_file, sock.getsockname())
+    print 'Serving %s on port %s.' % (poetry_file, sock.getsockname()[1])
 
     serve(sock, poetry_file, options.num_bytes, options.delay)
 
