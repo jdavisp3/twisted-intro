@@ -25,7 +25,7 @@ to serve up John Donne's Ecstasy, which I know you want to do.
     option = parser.add_option('--port', type='int', help=help)
 
     help = "The interface to listen on. Default is localhost."
-    option = parser.add_option('--iface', help=help, default='')
+    option = parser.add_option('--iface', help=help, default='localhost')
 
     help = "The number of seconds between sending bytes."
     option = parser.add_option('--delay', type='float', help=help,
