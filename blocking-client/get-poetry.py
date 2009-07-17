@@ -1,6 +1,6 @@
 # This is the blocking Get Poetry Now! client.
 
-import optparse, socket, time
+import datetime, optparse, socket
 
 
 def parse_args():
@@ -45,10 +45,24 @@ for that to work.
     return map(parse_address, addresses)
 
 
+def get_poetry(address):
+    pass
+
+
 def main():
     addresses = parse_args()
 
-    print addresses
+    elapsed = datetime.timedelta()
+
+    for address in addresses:
+        print 'Getting poetry from: %s' % (address,)
+        start = datetime.datetime.now()
+        poem = get_poetry(address)
+        time = datetime.datetime.now() - start
+        print 'Got a poem from %s in %s' % (address, time)
+        elapsed += time
+
+    print 'Got %d poems in %s' % (len(addresses), elapsed)
 
 
 if __name__ == '__main__':
