@@ -46,7 +46,27 @@ for that to work.
 
 
 def get_poetry(address):
-    pass
+    """Download a piece of poetry from the given address."""
+
+    sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    sock.connect(address)
+
+    poem = ''
+
+    while True:
+
+        # This is the 'blocking' call in this synchronous program.
+        # The recv() method will block for an indeterminate period
+        # of time waiting for bytes to be received from the server.
+
+        bytes = sock.recv(1024)
+
+        if not bytes:
+            break
+
+        poem += bytes
+
+    return poem
 
 
 def main():
@@ -57,7 +77,13 @@ def main():
     for address in addresses:
         print 'Getting poetry from: %s' % (address,)
         start = datetime.datetime.now()
+
+        # Each execution of 'get_poetry' corresponds to the
+        # execution of one synchronous task in Figure 1 here:
+        # http://dpeticol.webfactional.com/blog/?p=1209
+
         poem = get_poetry(address)
+
         time = datetime.datetime.now() - start
         print 'Got a poem from %s in %s' % (address, time)
         elapsed += time
