@@ -29,7 +29,7 @@ to serve up John Donne's Ecstasy, which I know you want to do.
 
     help = "The number of seconds between sending bytes."
     option = parser.add_option('--delay', type='float', help=help,
-                               default=1)
+                               default=.1)
 
     help = "The number of bytes to send at a time."
     option = parser.add_option('--num-bytes', type='int', help=help,
