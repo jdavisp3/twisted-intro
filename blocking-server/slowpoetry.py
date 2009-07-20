@@ -64,7 +64,7 @@ def send_poetry(sock, poetry_file, num_bytes, delay):
         print 'Sending %d bytes' % len(bytes)
 
         try:
-            sock.sendall(bytes)
+            sock.sendall(bytes) # this is a blocking call
         except socket.error:
             sock.close()
             inputf.close()
