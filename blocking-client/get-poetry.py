@@ -74,8 +74,9 @@ def main():
 
     elapsed = datetime.timedelta()
 
-    for address in addresses:
-        print 'Getting poetry from: %s' % (address,)
+    for i, address in enumerate(addresses):
+        print 'Task %d: get poetry from: %s' % (i + 1, address)
+
         start = datetime.datetime.now()
 
         # Each execution of 'get_poetry' corresponds to the
@@ -85,7 +86,7 @@ def main():
         poem = get_poetry(address)
 
         time = datetime.datetime.now() - start
-        print 'Got a poem from %s in %s' % (address, time)
+        print 'Task %d: got a poem from %s in %s' % (i + 1, address, time)
         elapsed += time
 
     print 'Got %d poems in %s' % (len(addresses), elapsed)
