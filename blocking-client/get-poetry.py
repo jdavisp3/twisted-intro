@@ -69,13 +69,20 @@ def get_poetry(address):
     return poem
 
 
+def format_address(address):
+    host, port = address
+    return '%s:%s' % (host or 'localhost', port)
+
+
 def main():
     addresses = parse_args()
 
     elapsed = datetime.timedelta()
 
     for i, address in enumerate(addresses):
-        print 'Task %d: get poetry from: %s' % (i + 1, address)
+        addr_fmt = format_address(address)
+
+        print 'Task %d: get poetry from: %s' % (i + 1, addr_fmt)
 
         start = datetime.datetime.now()
 
@@ -86,7 +93,7 @@ def main():
         poem = get_poetry(address)
 
         time = datetime.datetime.now() - start
-        print 'Task %d: got a poem from %s in %s' % (i + 1, address, time)
+        print 'Task %d: got a poem from %s in %s' % (i + 1, addr_fmt, time)
         elapsed += time
 
     print 'Got %d poems in %s' % (len(addresses), elapsed)
