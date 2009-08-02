@@ -88,7 +88,7 @@ def main():
 
         # Each execution of 'get_poetry' corresponds to the
         # execution of one synchronous task in Figure 1 here:
-        # http://dpeticol.webfactional.com/blog/?p=1209
+        # http://dpeticol.webfactional.com/blog/?p=1209#figure1
 
         poem = get_poetry(address)
 
