@@ -93,7 +93,10 @@ def main():
         poem = get_poetry(address)
 
         time = datetime.datetime.now() - start
-        print 'Task %d: got a poem from %s in %s' % (i + 1, addr_fmt, time)
+
+        msg = 'Task %d: got %d bytes of poetry from %s in %s'
+        print  msg % (i + 1, len(poem), addr_fmt, time)
+
         elapsed += time
 
     print 'Got %d poems in %s' % (len(addresses), elapsed)
