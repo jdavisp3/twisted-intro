@@ -62,6 +62,7 @@ def get_poetry(address):
         bytes = sock.recv(1024)
 
         if not bytes:
+            sock.close()
             break
 
         poem += bytes
