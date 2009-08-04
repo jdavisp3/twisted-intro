@@ -82,7 +82,7 @@ def get_poetry(sockets):
                     raise
 
             task_num = sock2task[sock]
-            addr_fmt = format_address(sock.getsockname())
+            addr_fmt = format_address(sock.getpeername())
 
             if not bytes:
                 sockets.remove(sock)
