@@ -1,12 +1,12 @@
 # This is the asynchronous Get Poetry Now! client.
 
-import datetime, optparse, select, socket
+import datetime, errno, optparse, select, socket
 
 
 def parse_args():
     usage = """usage: %prog [options] [hostname]:port ...
 
-This is the Get Poetry Now! client, blocking edition.
+This is the Get Poetry Now! client, asynchronous edition.
 Run it like this:
 
   python get-poetry.py port1 port2 port3 ...
@@ -14,9 +14,9 @@ Run it like this:
 If you are in the base directory of the twisted-intro package,
 you could run it like this:
 
-  python blocking-client/get-poetry.py 1001 1002 1003
+  python async-client/get-poetry.py 10001 10002 10003
 
-to grab poetry from servers on ports 1001, 1002, and 1003.
+to grab poetry from servers on ports 10001, 10002, and 10003.
 
 Of course, there need to be servers listening on those ports
 for that to work.
@@ -59,7 +59,17 @@ def get_poetry(sockets):
         # rlist is the list of sockets with data ready to read
 
         for sock in rlist:
-            bytes = sock.recv(1024)
+            bytes = ''
+
+            while True:
+                try:
+                    bytes += sock.recv(1024)
+                    if not bytes:
+                        break
+                except socket.error, e:
+                    if e.args[0] == errno.EAGAIN:
+                        break # we would have blocked
+                    raise
 
             task_num = sock2task[sock]
             addr_fmt = format_address(sock.getsockname())
