@@ -72,7 +72,7 @@ def get_poetry(address):
 
 def format_address(address):
     host, port = address
-    return '%s:%s' % (host or 'localhost', port)
+    return '%s:%s' % (host or '127.0.0.1', port)
 
 
 def main():
