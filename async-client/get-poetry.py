@@ -53,7 +53,14 @@ def get_poetry(sockets):
     # socket -> task numbers
     sock2task = dict([(s, i + 1) for i, s in enumerate(sockets)])
 
+    sockets = list(sockets) # make a copy
+
+    # we go around this loop until we've gotten all the poetry
+    # from all the sockets. This is the 'reactor loop'.
+
     while sockets:
+        # this select call blocks until one or more of the
+        # sockets is ready for read I/O
         rlist, _, _ = select.select(sockets, [], [])
 
         # rlist is the list of sockets with data ready to read
@@ -68,7 +75,10 @@ def get_poetry(sockets):
                         break
                 except socket.error, e:
                     if e.args[0] == errno.EAGAIN:
-                        break # we would have blocked
+                        # this error code means we would have
+                        # blocked if the socket was blocking.
+                        # instead we skip to the next socket
+                        break
                     raise
 
             task_num = sock2task[sock]
@@ -111,6 +121,9 @@ def main():
     poems = get_poetry(sockets)
 
     elapsed = datetime.datetime.now() - start
+
+    for i, sock in enumerate(sockets):
+        print 'Task %d: %d bytes of poetry' % (i + 1, len(poems[sock]))
 
     print 'Got %d poems in %s' % (len(addresses), elapsed)
 
