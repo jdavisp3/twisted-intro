@@ -81,6 +81,10 @@ def get_poetry(sockets):
                         break
                     raise
 
+            # Each execution of this inner loop corresponds to
+            # working on one asynchronous task in Figure 3 here:
+            # http://dpeticol.webfactional.com/blog/?p=1209#figure3
+
             task_num = sock2task[sock]
             addr_fmt = format_address(sock.getpeername())
 
