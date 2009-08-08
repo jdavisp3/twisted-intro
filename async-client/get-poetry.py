@@ -74,7 +74,7 @@ def get_poetry(sockets):
                     if not bytes:
                         break
                 except socket.error, e:
-                    if e.args[0] == errno.EAGAIN:
+                    if e.args[0] == errno.EWOULDBLOCK:
                         # this error code means we would have
                         # blocked if the socket was blocking.
                         # instead we skip to the next socket
