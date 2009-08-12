@@ -1,6 +1,7 @@
 
 def hello():
     print 'Hello from the reactor loop!'
+    print 'Lately I feel like I\'m stuck in a rut.'
 
 from twisted.internet import reactor
 
