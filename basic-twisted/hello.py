@@ -6,4 +6,5 @@ from twisted.internet import reactor
 
 reactor.callWhenRunning(hello)
 
+print 'Starting the reactor.'
 reactor.run()
