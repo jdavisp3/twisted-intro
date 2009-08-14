@@ -8,14 +8,17 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="300.20435"
-   height="365.5014"
+   width="216.86661"
+   height="254.12202"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="reactor-2.svg"
-   inkscape:output_extension="org.inkscape.output.svg.inkscape">
+   sodipodi:docname="reactor-callback.svg"
+   inkscape:output_extension="org.inkscape.output.svg.inkscape"
+   inkscape:export-filename="/home/dave/src/twisted-intro/images/reactor-callback.png"
+   inkscape:export-xdpi="90"
+   inkscape:export-ydpi="90">
   <defs
      id="defs4">
     <marker
@@ -96,8 +99,8 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="2.0382959"
-     inkscape:cx="209.02945"
-     inkscape:cy="180.76819"
+     inkscape:cx="116.30494"
+     inkscape:cy="115.027"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="false"
@@ -141,7 +144,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-177.11921,-71.024349)">
+     transform="translate(-213.90526,-173.06416)">
     <path
        sodipodi:type="arc"
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.26512635;stroke-linecap:square;stroke-linejoin:bevel;marker-start:url(#Arrow2Lend);marker-mid:url(#Arrow2Lend);marker-end:none;stroke-miterlimit:4;stroke-dasharray:1.26512631, 1.26512631;stroke-dashoffset:0;stroke-opacity:1"
@@ -171,44 +174,44 @@
        id="path8437"
        sodipodi:nodetypes="csssszc" />
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;stroke-miterlimit:4;stroke-dasharray:1,2;stroke-dashoffset:0"
-       d="M 47.098167,289.94809 L 242.35932,289.94809"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1, 2;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 37.286049,289.94809 L 253.15265,289.94809"
        id="path8984"
        transform="translate(177.11921,71.024349)"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="235.50131"
-       y="372.74701"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="218.96089"
+       y="375.69064"
        id="text8986"><tspan
          sodipodi:role="line"
          id="tspan8988"
-         x="235.50131"
-         y="372.74701">Our code</tspan></text>
+         x="218.96089"
+         y="375.69064">Our code</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:4, 1;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 381.70187,340.367 L 381.70187,387.95577"
+       d="M 378.26763,335.68062 L 378.26763,383.26939"
        id="path8990" />
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="233.92027"
-       y="354.05972"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="218.22089"
+       y="353.07852"
        id="text9527"><tspan
          sodipodi:role="line"
          id="tspan9529"
-         x="233.92027"
-         y="354.05972">Twisted code</tspan></text>
+         x="218.22089"
+         y="353.07852">Twisted code</tspan></text>
     <text
        xml:space="preserve"
-       style="font-size:10px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="384.53629"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="381.10205"
        y="346.70062"
        id="text9531"><tspan
          sodipodi:role="line"
          id="tspan9533"
-         x="384.53629"
+         x="381.10205"
          y="346.70062">Callback</tspan></text>
   </g>
 </svg>
