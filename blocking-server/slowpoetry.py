@@ -86,7 +86,7 @@ def main():
     options, poetry_file= parse_args()
 
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
+    sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
     sock.bind((options.iface, options.port or 0))
 
     sock.listen(5)
