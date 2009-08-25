@@ -8,7 +8,7 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="339.38898"
+   width="346.39001"
    height="275.66156"
    id="svg2"
    sodipodi:version="0.32"
@@ -16,7 +16,7 @@
    version="1.0"
    sodipodi:docname="reactor-doread.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/dave/src/twisted-intro/images/reactor-callback.png"
+   inkscape:export-filename="/home/dave/src/twisted-intro/images/reactor-doread.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -96,10 +96,10 @@
      gridtolerance="10"
      guidetolerance="10"
      objecttolerance="10"
-     inkscape:pageopacity="0.0"
+     inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2.0382959"
-     inkscape:cx="116.30494"
+     inkscape:cx="202.36359"
      inkscape:cy="115.027"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -144,7 +144,8 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-213.90526,-151.52464)">
+     transform="translate(-213.90526,-151.52464)"
+     style="display:inline">
     <path
        sodipodi:type="arc"
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.26512635;stroke-linecap:square;stroke-linejoin:bevel;marker-start:url(#Arrow2Lend);marker-mid:url(#Arrow2Lend);marker-end:none;stroke-miterlimit:4;stroke-dasharray:1.26512631, 1.26512631;stroke-dashoffset:0;stroke-opacity:1"
