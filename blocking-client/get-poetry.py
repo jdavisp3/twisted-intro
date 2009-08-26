@@ -14,9 +14,9 @@ Run it like this:
 If you are in the base directory of the twisted-intro package,
 you could run it like this:
 
-  python blocking-client/get-poetry.py 1001 1002 1003
+  python blocking-client/get-poetry.py 10001 10002 10003
 
-to grab poetry from servers on ports 1001, 1002, and 1003.
+to grab poetry from servers on ports 10001, 10002, and 10003.
 
 Of course, there need to be servers listening on those ports
 for that to work.
