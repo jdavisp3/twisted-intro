@@ -65,6 +65,9 @@ class PoetryProtocol(Protocol):
                                                    len(self.poem))
         from twisted.internet import reactor
         reactor.addSystemEventTrigger('during', 'shutdown', report)
+        self.poemReceived()
+
+    def poemReceived(self):
         self.factory.poem_finished()
 
 
