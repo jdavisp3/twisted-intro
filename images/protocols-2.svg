@@ -8,15 +8,15 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="482.08957"
-   height="358.32596"
+   width="491.15036"
+   height="428.32596"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.46"
    version="1.0"
-   sodipodi:docname="protocols-1.svg"
+   sodipodi:docname="protocols-2.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/dave/src/twisted-intro/images/protocol-1.png"
+   inkscape:export-filename="/home/dave/src/twisted-intro/images/protocols-1.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -24,15 +24,15 @@
     <marker
        inkscape:stockid="Arrow2Lstart"
        orient="auto"
-       refY="0.0"
-       refX="0.0"
+       refY="0"
+       refX="0"
        id="Arrow2Lstart"
        style="overflow:visible">
       <path
          id="path4576"
-         style="font-size:12.0;fill-rule:evenodd;stroke-width:0.62500000;stroke-linejoin:round"
-         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.9730900,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z "
-         transform="scale(1.1) translate(1,0)" />
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 L -2.2072895,0.016013256 L 8.7185884,-4.0017078 C 6.97309,-1.6296469 6.9831476,1.6157441 8.7185878,4.0337352 z"
+         transform="matrix(1.1,0,0,1.1,1.1,0)" />
     </marker>
     <marker
        inkscape:stockid="Arrow2Lend"
@@ -157,7 +157,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-14.229261,120.18522)"
+     transform="translate(-82.78128,120.18522)"
      style="display:inline">
     <rect
        style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.03557789;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
@@ -177,12 +177,12 @@
          x="133.05527"
          y="-107.26322">Protocol Factory</tspan></text>
     <rect
-       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.20609272;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:1.58935499;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
        id="rect4545"
-       width="139.79391"
-       height="160.24844"
-       x="134.0083"
-       y="77.289246" />
+       width="169.23466"
+       height="229.86519"
+       x="134.19994"
+       y="77.480873" />
     <text
        xml:space="preserve"
        style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
@@ -193,110 +193,143 @@
          id="tspan4549"
          x="133.55527"
          y="74.3442">Protocol</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1.12293684;stroke-linecap:butt;stroke-linejoin:miter;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
-       d="M 233.90554,-1.7523316 L 233.90554,75.07236"
-       id="path4553" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:LMTypewriter10;-inkscape-font-specification:LMTypewriter10"
-       x="172.44125"
-       y="-78.97126"
-       id="text6415"><tspan
-         sodipodi:role="line"
-         id="tspan6417"
-         x="172.44125"
-         y="-78.97126">.buildProtocol()</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="238.79213"
-       y="18.680021"
-       id="text6423"><tspan
-         sodipodi:role="line"
-         id="tspan6425"
-         x="238.79213"
-         y="18.680021">2. which builds an</tspan></text>
-    <text
-       xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:LMTypewriter10;-inkscape-font-specification:LMTypewriter10"
-       x="133.90526"
-       y="97.186203"
+       x="139.46007"
+       y="97.080742"
        id="text6427"><tspan
          sodipodi:role="line"
          id="tspan6429"
-         x="133.90526"
-         y="97.186203">.factory</tspan></text>
+         x="139.46007"
+         y="97.080742">.factory</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1"
        d="M -80,-54.33844 C -80,-54.33844 -137.18171,-118.42992 -130,-154.33846 C -120,-204.33846 -80,-224.33844 -80,-224.33844"
        id="path6431"
        transform="translate(213.90526,151.52464)"
        sodipodi:nodetypes="csc" />
-    <text
-       xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="13.905261"
-       y="-58.641823"
-       id="text6966"><tspan
-         sodipodi:role="line"
-         id="tspan6968"
-         x="13.905261"
-         y="-58.641823">5. which refers to</tspan></text>
     <path
        style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline"
-       d="M 400.92787,-93.998692 C 372.56074,-114.5046 298.34128,-102.55493 274.22926,-87.255927"
+       d="M 404.22926,68.140738 C 394.22926,108.14074 339.11009,106.43134 304.22926,118.14074"
        id="path7563"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
        x="404.22925"
-       y="-81.859261"
+       y="68.140739"
        id="text7565"><tspan
          sodipodi:role="line"
          id="tspan7567"
          x="404.22925"
-         y="-81.859261">1. Twisted calls</tspan></text>
-    <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline"
-       d="M 233.90526,51.358176 C 233.90526,51.358176 273.90526,65.807604 253.90526,115.80761 C 247.35118,132.19281 221.75633,140.57332 212.23112,133.03232 C 196.27939,120.40352 183.90526,101.35818 183.90526,101.35818"
-       id="path7569"
-       sodipodi:nodetypes="cssc" />
-    <text
-       xml:space="preserve"
-       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="203.90526"
-       y="151.35817"
-       id="text7571"><tspan
-         sodipodi:role="line"
-         id="tspan7573"
-         x="203.90526"
-         y="151.35817">4. and sets</tspan></text>
+         y="68.140739">1. Twisted calls</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:LMTypewriter10;-inkscape-font-specification:LMTypewriter10"
-       x="138.83687"
-       y="-11.204698"
-       id="text7575"><tspan
+       x="139.46007"
+       y="122.59674"
+       id="text9876"><tspan
          sodipodi:role="line"
-         id="tspan7577"
-         x="138.83687"
-         y="-11.204698">.protocol</tspan></text>
+         id="tspan9878"
+         x="139.46007"
+         y="122.59674">.makeConnection(transport)</tspan></text>
+    <rect
+       style="opacity:1;fill:#ffffff;fill-opacity:1;stroke:#000000;stroke-width:0.9157092;stroke-linecap:square;stroke-linejoin:bevel;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;display:inline"
+       id="rect9880"
+       width="129.24455"
+       height="99.913368"
+       x="444.22925"
+       y="138.14073" />
+    <text
+       xml:space="preserve"
+       style="font-size:14px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="443.53317"
+       y="135.00616"
+       id="text9882"><tspan
+         sodipodi:role="line"
+         id="tspan9884"
+         x="443.53317"
+         y="135.00616">Transport</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:LMTypewriter10;-inkscape-font-specification:LMTypewriter10"
+       x="234.22926"
+       y="198.14073"
+       id="text9886"><tspan
+         sodipodi:role="line"
+         id="tspan9888"
+         x="234.22926"
+         y="198.14073">.transport</tspan></text>
     <path
-       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:url(#Arrow2Lstart);marker-end:none;stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline;marker-mid:none"
-       d="M 164.22926,-1.8592617 C 184.22926,28.140738 204.22926,38.140738 234.22926,43.140738"
-       id="path7579"
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline"
+       d="M 244.22926,128.14074 C 234.22926,168.14074 266.72243,148.14074 264.22926,188.14074"
+       id="path9890"
        sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="120.39326"
-       y="39.864738"
-       id="text9721"><tspan
+       x="164.22926"
+       y="158.14073"
+       id="text9892"><tspan
          sodipodi:role="line"
-         id="tspan9723"
-         x="120.39326"
-         y="39.864738">3. instance of</tspan></text>
+         id="tspan9894"
+         x="164.22926"
+         y="158.14073">2. which sets</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline"
+       d="M 304.22926,198.14074 C 304.22926,198.14074 414.22926,198.14074 444.22926,198.14074"
+       id="path9896"
+       sodipodi:nodetypes="cs" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="327.0329"
+       y="191.25563"
+       id="text9898"><tspan
+         sodipodi:role="line"
+         id="tspan9900"
+         x="327.0329"
+         y="191.25563">3. which refers to</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:1, 1;stroke-dashoffset:0;stroke-opacity:1;display:inline"
+       d="M 252.78128,158.14074 C 222.78128,178.14074 212.78128,198.14074 232.78128,238.14074"
+       id="path9902"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:LMTypewriter10;-inkscape-font-specification:LMTypewriter10"
+       x="232.78128"
+       y="248.14073"
+       id="text9904"><tspan
+         sodipodi:role="line"
+         id="tspan9906"
+         x="232.78128"
+         y="248.14073">.connected</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="141.3521"
+       y="225.69273"
+       id="text9908"><tspan
+         sodipodi:role="line"
+         id="tspan9910"
+         x="141.3521"
+         y="225.69273">4. and also sets</tspan></text>
+    <path
+       style="fill:none;fill-rule:evenodd;stroke:#000000;stroke-width:0.61072743;stroke-linecap:butt;stroke-linejoin:miter;marker-start:none;marker-end:url(#Arrow2Lend);stroke-miterlimit:4;stroke-dasharray:0.6107274, 0.6107274;stroke-dashoffset:0;stroke-opacity:1;display:inline"
+       d="M 302.58664,248.14161 C 302.58664,248.14161 341.67428,248.14161 352.33455,248.14161"
+       id="path9912"
+       sodipodi:nodetypes="cs" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="355.55658"
+       y="250.91602"
+       id="text9918"><tspan
+         sodipodi:role="line"
+         id="tspan9920"
+         x="355.55658"
+         y="250.91602">True</tspan></text>
   </g>
 </svg>
