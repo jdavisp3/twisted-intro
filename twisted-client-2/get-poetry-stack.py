@@ -57,10 +57,10 @@ class PoetryProtocol(Protocol):
         os._exit(0)
 
     def connectionLost(self, reason):
-        self.poemReceived()
+        self.poemReceived(self.poem)
 
-    def poemReceived(self):
-        self.factory.poem_finished(self.task_num, self.poem)
+    def poemReceived(self, poem):
+        self.factory.poem_finished(self.task_num, poem)
 
 
 class PoetryClientFactory(ClientFactory):
