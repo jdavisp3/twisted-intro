@@ -1,4 +1,4 @@
-# This is the Twisted Get Poetry Now! client, version 1.
+# This is the Twisted Get Poetry Now! client, version 1.0.
 
 # NOTE: This should not be used as the basis for production code.
 # It uses low-level Twisted APIs as a learning exercise.
@@ -11,7 +11,7 @@ from twisted.internet import main
 def parse_args():
     usage = """usage: %prog [options] [hostname]:port ...
 
-This is the Get Poetry Now! client, Twisted version 1.
+This is the Get Poetry Now! client, Twisted version 1.0.
 Run it like this:
 
   python get-poetry.py port1 port2 port3 ...

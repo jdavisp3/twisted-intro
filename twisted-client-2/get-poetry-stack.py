@@ -1,4 +1,4 @@
-# This is the Twisted Get Poetry Now! client, version 2, with stacktrace.
+# This is the Twisted Get Poetry Now! client, version 2.0, with stacktrace.
 
 # NOTE: This should not be used as the basis for production code.
 
@@ -10,7 +10,7 @@ from twisted.internet.protocol import Protocol, ClientFactory
 def parse_args():
     usage = """usage: %prog [options] [hostname]:port ...
 
-This is the Get Poetry Now! client, Twisted version 2, with stacktrace.
+This is the Get Poetry Now! client, Twisted version 2.0, with stacktrace.
 Run it like this:
 
   python get-poetry-stack.py port1 port2 port3 ...
