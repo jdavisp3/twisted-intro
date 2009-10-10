@@ -101,15 +101,20 @@ def poetry_main():
     from twisted.internet import reactor
 
     poems = []
+    errors = []
 
     def got_poem(poem):
         poems.append(poem)
-        if len(poems) == len(addresses):
-            reactor.stop()
+        poem_done()
 
     def poem_failed(err):
         print >>sys.stderr, 'Poem failed:', err
-        got_poem(None)
+        errors.append(err)
+        poem_done()
+
+    def poem_done():
+        if len(poems) + len(errors) == len(addresses):
+            reactor.stop()
 
     for address in addresses:
         host, port = address
@@ -118,8 +123,7 @@ def poetry_main():
     reactor.run()
 
     for poem in poems:
-        if poem is not None:
-            print poem
+        print poem
 
 
 if __name__ == '__main__':
