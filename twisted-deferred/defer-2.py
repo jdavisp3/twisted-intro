@@ -13,7 +13,7 @@ d = Deferred()
 # add a callback/errback pair to the chain
 d.addCallbacks(got_poem, poem_failed)
 
-# fire the chain with a normal result
+# fire the chain with an error result
 d.errback(Failure(Exception('I have failed.')))
 
 print "Finished"
