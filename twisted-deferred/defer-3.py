@@ -5,6 +5,8 @@ def got_poem(res):
     print res
 
 def poem_failed(err):
+    print err.__class__
+    print err
     print 'No poetry for you.'
 
 d = Deferred()
@@ -13,6 +15,4 @@ d = Deferred()
 d.addCallbacks(got_poem, poem_failed)
 
 # fire the chain with a normal result
-d.callback('This poem is short.')
-
-print "Finished"
+d.errback(Exception('I have failed.'))
