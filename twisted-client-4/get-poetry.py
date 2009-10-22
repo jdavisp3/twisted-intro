@@ -70,12 +70,14 @@ class PoetryClientFactory(ClientFactory):
         self.deferred = deferred
 
     def poem_finished(self, poem):
-        d, self.deferred = self.deferred, None
-        d.callback(poem)
+        if self.deferred is not None:
+            d, self.deferred = self.deferred, None
+            d.callback(poem)
 
     def clientConnectionFailed(self, connector, reason):
-        d, self.deferred = self.deferred, None
-        d.errback(reason)
+        if self.deferred is not None:
+            d, self.deferred = self.deferred, None
+            d.errback(reason)
 
 
 def get_poetry(host, port):
