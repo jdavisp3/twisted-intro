@@ -30,7 +30,8 @@ def blocking_poem(_):
 
 def end_chain(_):
     print "The end of the callback chain."
-
+    from twisted.internet import reactor
+    reactor.stop()
 
 d = Deferred()
 
@@ -38,6 +39,15 @@ d.addCallback(start_chain)
 d.addCallback(blocking_poem)
 d.addCallback(end_chain)
 
-print 'Firing deferred.'
-d.callback(True)
-print 'Firing finished.'
+def fire():
+    print 'Firing deferred.'
+    d.callback(True)
+    print 'Firing finished.'
+
+from twisted.internet import reactor
+
+reactor.callWhenRunning(fire)
+
+print 'Starting reactor.'
+reactor.run()
+print 'Done.'
