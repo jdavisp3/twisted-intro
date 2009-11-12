@@ -300,13 +300,13 @@
     <text
        xml:space="preserve"
        style="font-size:15.99998569px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
-       x="286.89667"
+       x="272.50607"
        y="243.17175"
        id="text2403-1-1-7"><tspan
          sodipodi:role="line"
          id="tspan2405-6-5-4"
-         x="286.89667"
-         y="243.17175">sock.recv()</tspan></text>
+         x="272.50607"
+         y="243.17175">sock.connect()</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
