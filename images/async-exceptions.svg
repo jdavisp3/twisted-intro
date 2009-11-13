@@ -9,8 +9,8 @@
    xmlns="http://www.w3.org/2000/svg"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="411.91104"
-   height="256.54401"
+   width="422.13904"
+   height="249.39201"
    id="svg2"
    sodipodi:version="0.32"
    inkscape:version="0.47pre2 r22153"
@@ -194,7 +194,7 @@
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(-111.80966,-24.243745)">
+     transform="translate(-111.80966,-31.395745)">
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:none;marker-end:url(#Arrow1Mend)"
        d="m 201.35366,53.171746 0,210.232944"
@@ -310,16 +310,16 @@
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="468.99863"
+       x="479.22662"
        y="278.17175"
        id="text3479-1"><tspan
          sodipodi:role="line"
          id="tspan3481-9"
-         x="468.99863"
+         x="479.22662"
          y="278.17175">exceptions</tspan></text>
     <path
        style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none;marker-start:url(#Arrow1Mstart);marker-end:none"
-       d="m 496.58166,52.938806 0,210.232954"
+       d="m 506.80966,52.938806 0,210.232954"
        id="path2403-0"
        sodipodi:nodetypes="cc" />
     <text
