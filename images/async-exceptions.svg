@@ -307,13 +307,13 @@
     <text
        xml:space="preserve"
        style="font-size:15.99998569px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
-       x="294.92865"
+       x="304.5224"
        y="243.17175"
        id="text2403-1-1-7"><tspan
          sodipodi:role="line"
          id="tspan2405-6-5-4"
-         x="294.92865"
-         y="243.17175">got_poetry()</tspan></text>
+         x="304.5224"
+         y="243.17175">got_poem()</tspan></text>
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
