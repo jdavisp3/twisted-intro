@@ -22,11 +22,40 @@ def parse_args():
         parser.error('No arguments supported.')
 
 
+class Screen(object):
+    """An ascii screen."""
+
+    def __init__(self):
+        self.pixels = {} # (x, y) -> char
+
+    def draw(self, x, y, char):
+        self.pixels[x,y] = char
+
+    def __str__(self):
+        width = max(p[0] for p in self.pixels)
+        height = max(p[1] for p in self.pixels)
+
+        s = ''
+
+        for y in range(height):
+            for x in range(width):
+                s += self.pixels.get((x,y), ' ')
+            s += '\n'
+
+        return s
+        
+
 class Callback(object):
+
+    height = 5
 
     def __init__(self, style, argument=None):
         self.style = style
         self.argument = argument
+
+    @property
+    def min_width(self):
+        return len(repr(self)) + 4
 
     def __call__(self, res):
         if self.style == 'return':
