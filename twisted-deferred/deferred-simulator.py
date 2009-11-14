@@ -22,11 +22,68 @@ def parse_args():
         parser.error('No arguments supported.')
 
 
+class Callback(object):
+
+    def __init__(self, style, argument=None):
+        self.style = style
+        self.argument = argument
+
+    def __call__(self, res):
+        if self.style == 'return':
+            return self.argument
+        if self.style == 'fail':
+            raise Exception(self.argument)
+        return res
+
+    def __repr__(self):
+        if self.style == 'passthru':
+            return 'passthru'
+        return self.style + ' ' + self.argument
+
+
 def get_next_pair():
     """Get the next callback/errback pair from the user."""
 
+    def get_cb():
+        if not parts:
+            raise BadInput('missing command')
+
+        cmd = parts.pop(0).lower()
+
+        for command in ('return', 'fail', 'passthru'):
+            if command.startswith(cmd):
+                cmd = command
+                break
+        else:
+            raise BadInput('bad command: %s' % cmd)
+
+        if cmd in ('return', 'fail'):
+            if not parts:
+                raise BadInput('missing argument')
+            return Callback(cmd, parts.pop(0))
+        else:
+            return Callback(cmd)
+
+    line = raw_input()
+
+    if not line:
+        return None
+
+    parts = line.strip().split()
+
+    callback, errback = get_cb(), get_cb()
+
+    if parts:
+        raise BadInput('extra arguments')
+
+    return callback, errback
+
+
+def get_pairs():
+    """Get the list of callback/errback pairs from the user."""
+
     print """\
-Enter a callback/errback pair in the form:
+Enter a callback/errback pairs in the form:
 
   CALLBACK ERRBACK
 
@@ -47,56 +104,30 @@ Examples:
 
   f googly p # callback raises Exception('googly')
              # and errback passes it's failure along
+
+Enter a blank line when you are done.
 """
 
+    pairs = []
 
-    def get_cb(parts):
-        if not parts:
-            raise BadInput('missing command')
+    while True:
+        try:
+            pair = get_next_pair()
+        except BadInput, e:
+            print 'ERROR:', e
+            continue
 
-        cmd = parts.pop(0).lower()
+        if pair is None:
+            break
 
-        for command in ('return', 'fail', 'passthru'):
-            if command.startswith(cmd):
-                cmd = command
-                break
-        else:
-            raise BadInput('bad command', cmd)
-
-        if cmd in ('return', 'fail'):
-            if not parts:
-                raise BadInput('missing argument')
-
-            result = parts.pop(0)
-
-            if cmd == 'return':
-                return lambda res: result
-            else:
-                def callback(res):
-                    raise Exception(result)
-                return callback
-
-            return lambda res: res
-
-    line = raw_input()
-
-    if not line:
-        return None
-
-    parts = line.strip().split()
-
-    callback, errback = get_cb(), get_cb()
-
-    if parts:
-        raise BadInput('extra arguments')
-
-    return callback, errback
-
-
+        pairs.append(pair)
+           
+    return pairs
 
 
 def main():
     parse_args()
+    print get_pairs()
 
 
 if __name__ == '__main__':
