@@ -32,8 +32,8 @@ class Screen(object):
         self.pixels[x,y] = char
 
     def __str__(self):
-        width = max(p[0] for p in self.pixels)
-        height = max(p[1] for p in self.pixels)
+        width = max([p[0] + 1 for p in self.pixels] + [0])
+        height = max([p[1] + 1 for p in self.pixels] + [0])
 
         s = ''
 
@@ -52,10 +52,7 @@ class Callback(object):
     def __init__(self, style, argument=None):
         self.style = style
         self.argument = argument
-
-    @property
-    def min_width(self):
-        return len(repr(self)) + 4
+        self.min_width = len(repr(self)) + 4
 
     def __call__(self, res):
         if self.style == 'return':
@@ -68,6 +65,24 @@ class Callback(object):
         if self.style == 'passthru':
             return 'passthru'
         return self.style + ' ' + self.argument
+
+
+class Chain(object):
+    """A chain of callback/errback pairs."""
+
+    def __init__(self, pairs):
+        self.pairs = pairs
+        self.callback_width = max([p[0].min_width for p in self.pairs] + [0])
+        self.errback_width = max([p[1].min_width for p in self.pairs] + [0])
+        self.width = self.callback_width + self.errback_width + 2
+        self.height = Callback.height * len(self.pairs)
+        self.height += 4 * len(self.pairs[1:])
+
+    def __repr__(self):
+        s = ''
+        for p in self.pairs:
+            s += repr(p) + '\n'
+        return s
 
 
 def get_next_pair():
@@ -156,7 +171,10 @@ Enter a blank line when you are done.
 
 def main():
     parse_args()
-    print get_pairs()
+
+    chain = Chain(get_pairs())
+
+    print chain
 
 
 if __name__ == '__main__':
