@@ -28,8 +28,20 @@ class Screen(object):
     def __init__(self):
         self.pixels = {} # (x, y) -> char
 
-    def draw(self, x, y, char):
+    def draw_char(self, x, y, char):
         self.pixels[x,y] = char
+
+    def draw_horiz_line(self, x, y, width):
+        for i in range(width):
+            self.draw_char(x + i, y, '-')
+
+    def draw_vert_line(self, x, y, height):
+        for i in range(height):
+            self.draw_char(x, y + i, '|')
+
+    def draw_text(self, x, y, text):
+        for i, char in enumerate(text):
+            self.draw_char(x + i, y, char)
 
     def __str__(self):
         width = max([p[0] + 1 for p in self.pixels] + [0])
@@ -46,6 +58,7 @@ class Screen(object):
         
 
 class Callback(object):
+    """A single callback or errback."""
 
     height = 5
 
@@ -65,6 +78,12 @@ class Callback(object):
         if self.style == 'passthru':
             return 'passthru'
         return self.style + ' ' + self.argument
+
+    def draw(self, screen, x, y, width):
+        screen.draw_horiz_line(x, y, width)
+        screen.draw_horiz_line(x, y + 4, width)
+        screen.draw_vert_line(x, y + 1, 3)
+        screen.draw_vert_line(x + width - 1, y + 1, 3)
 
 
 class Chain(object):
@@ -174,7 +193,11 @@ def main():
 
     chain = Chain(get_pairs())
 
-    print chain
+    screen = Screen()
+
+    chain.pairs[0][0].draw(screen, 0, 0, chain.pairs[0][0].min_width)
+
+    print screen
 
 
 if __name__ == '__main__':
