@@ -84,6 +84,7 @@ class Callback(object):
         screen.draw_horiz_line(x, y + 4, width)
         screen.draw_vert_line(x, y + 1, 3)
         screen.draw_vert_line(x + width - 1, y + 1, 3)
+        screen.draw_text(x + 1, y + 2, repr(self).center(width - 2))
 
 
 class Chain(object):
@@ -95,13 +96,20 @@ class Chain(object):
         self.errback_width = max([p[1].min_width for p in self.pairs] + [0])
         self.width = self.callback_width + self.errback_width + 2
         self.height = Callback.height * len(self.pairs)
-        self.height += 4 * len(self.pairs[1:])
+        self.height += 3 * len(self.pairs[1:])
 
     def __repr__(self):
         s = ''
         for p in self.pairs:
             s += repr(p) + '\n'
         return s
+
+    def draw_chain(self, screen, x, y):
+        for callback, errback in self.pairs:
+            callback.draw(screen, x, y, self.callback_width)
+            errback.draw(screen, x + self.callback_width + 2,
+                         y, self.errback_width)
+            y += 8
 
 
 def get_next_pair():
@@ -181,7 +189,11 @@ Enter a blank line when you are done.
             continue
 
         if pair is None:
-            break
+            if not pairs:
+                print 'You must enter at least one pair.'
+                continue
+            else:
+                break
 
         pairs.append(pair)
            
@@ -195,7 +207,7 @@ def main():
 
     screen = Screen()
 
-    chain.pairs[0][0].draw(screen, 0, 0, chain.pairs[0][0].min_width)
+    chain.draw_chain(screen, 0, 0)
 
     print screen
 
