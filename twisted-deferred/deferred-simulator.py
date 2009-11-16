@@ -91,10 +91,12 @@ class Chain(object):
     """A chain of callback/errback pairs."""
 
     def __init__(self, pairs):
+        assert pairs
         self.pairs = pairs
         self.callback_width = max([p[0].min_width for p in self.pairs] + [0])
-        self.errback_width = max([p[1].min_width for p in self.pairs] + [0])
-        self.width = self.callback_width + self.errback_width + 2
+        self.callback_width = max([p[1].min_width for p in self.pairs]
+                                  + [self.callback_width])
+        self.width = self.callback_width * 2 + 2
         self.height = Callback.height * len(self.pairs)
         self.height += 3 * len(self.pairs[1:])
 
@@ -108,12 +110,12 @@ class Chain(object):
         for callback, errback in self.pairs:
             callback.draw(screen, x, y, self.callback_width)
             errback.draw(screen, x + self.callback_width + 2,
-                         y, self.errback_width)
+                         y, self.callback_width)
             y += Callback.height + 3
 
     def draw_callback(self, screen, x, y, result):
-        screen.draw_text(x, y, result.center(self.callback_width))
-        screen.draw_vert_line(x - 1 + self.callback_width / 2, y + 1, 2)
+        callback_mid = x - 1 + self.callback_width / 2
+        errback_mid = self.callback_width + 2 + self.callback_width / 2
 
         class DrawState(object):
             last_x = x
@@ -121,9 +123,18 @@ class Chain(object):
 
         state = DrawState()
 
-        def wrap_callback(cb, x, width):
+        def wrap_callback(cb, x):
             def callback(res):
-                cb.draw(screen, x, state.last_y, width)
+                cb.draw(screen, x, state.last_y, self.callback_width)
+                if state.last_x == x:
+                    screen.draw_vert_line(x - 1 + self.callback_width / 2,
+                                          state.last_y - 3, 3)
+                elif state.last_x < x:
+                    screen.draw_vert_line(callback_mid, state.last_y - 3, 2)
+                    screen.draw_vert_line(errback_mid, state.last_y - 2, 2)
+                    screen.draw_horiz_line(callback_mid + 1,
+                                           state.last_y - 2,
+                                           errback_mid - callback_mid - 1)
                 state.last_x = x
                 state.last_y += cb.height + 3
                 return cb(res)
@@ -132,12 +143,13 @@ class Chain(object):
         d = defer.Deferred()
 
         for pair in self.pairs:
-            callback = wrap_callback(pair[0], x, self.callback_width)
-            errback = wrap_callback(pair[1], x + self.callback_width + 2,
-                                    self.errback_width)
+            callback = wrap_callback(pair[0], x)
+            errback = wrap_callback(pair[1], x + self.callback_width + 2)
             d.addCallbacks(callback, errback)
 
         d.callback(result)
+
+        screen.draw_text(x, y, result.center(self.callback_width))
 
 
 def get_next_pair():
