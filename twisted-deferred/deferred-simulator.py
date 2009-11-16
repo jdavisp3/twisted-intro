@@ -3,6 +3,7 @@
 import optparse
 
 from twisted.internet import defer
+from twisted.python.failure import Failure
 
 __doc__ = """\
 usage: %prog
@@ -114,12 +115,20 @@ class Chain(object):
             y += Callback.height + 3
 
     def draw_callback(self, screen, x, y, result):
+        d = self.make_drawing_deferred(screen, x, y)
+        d.callback(result)
+
+    def draw_errback(self, screen, x, y, result):
+        d = self.make_drawing_deferred(screen, x, y)
+        d.errback(Exception(result))
+
+    def make_drawing_deferred(self, screen, x, y):
         callback_mid = x - 1 + self.callback_width / 2
-        errback_mid = self.callback_width + 2 + self.callback_width / 2
+        errback_mid = x + self.callback_width + 2 + self.callback_width / 2
 
         class DrawState(object):
-            last_x = x
-            last_y = y + 3
+            last_x = None
+            last_y = None
 
         state = DrawState()
 
@@ -140,16 +149,26 @@ class Chain(object):
                 return cb(res)
             return callback
 
+        def draw_start(res):
+            if isinstance(res, Failure):
+                screen.draw_text(x + self.callback_width + 2, y,
+                                 res.value.args[0].center(self.callback_width))
+                screen.last_x = x + self.callback_width + 2
+            else:
+                screen.draw_text(x, y, res.center(self.callback_width))
+                state.last_x = x
+            state.last_y = y + 4
+
         d = defer.Deferred()
+
+        d.addBoth(draw_start)
 
         for pair in self.pairs:
             callback = wrap_callback(pair[0], x)
             errback = wrap_callback(pair[1], x + self.callback_width + 2)
             d.addCallbacks(callback, errback)
 
-        d.callback(result)
-
-        screen.draw_text(x, y, result.center(self.callback_width))
+        return d
 
 
 def get_next_pair():
@@ -248,6 +267,7 @@ def main():
     screen = Screen()
 
     chain.draw_callback(screen, 0, 0, 'initial')
+    chain.draw_callback(screen, chain.width + 12, 0, 'initial')
 
     print screen
 
