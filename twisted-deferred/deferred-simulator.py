@@ -123,8 +123,10 @@ class Chain(object):
         d.errback(Exception(result))
 
     def make_drawing_deferred(self, screen, x, y):
-        callback_mid = x - 1 + self.callback_width / 2
-        errback_mid = x + self.callback_width + 2 + self.callback_width / 2
+        callback_mid_x = x - 1 + self.callback_width / 2
+
+        errback_left_x = x + self.callback_width + 2
+        errback_mid_x = errback_left_x + self.callback_width / 2
 
         class DrawState(object):
             last_x = None
@@ -139,11 +141,17 @@ class Chain(object):
                     screen.draw_vert_line(x - 1 + self.callback_width / 2,
                                           state.last_y - 3, 3)
                 elif state.last_x < x:
-                    screen.draw_vert_line(callback_mid, state.last_y - 3, 2)
-                    screen.draw_vert_line(errback_mid, state.last_y - 2, 2)
-                    screen.draw_horiz_line(callback_mid + 1,
+                    screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
+                    screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2)
+                    screen.draw_horiz_line(callback_mid_x + 1,
                                            state.last_y - 2,
-                                           errback_mid - callback_mid - 1)
+                                           errback_mid_x - callback_mid_x - 1)
+                else:
+                    screen.draw_vert_line(errback_mid_x, state.last_y - 3, 2)
+                    screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2)
+                    screen.draw_horiz_line(callback_mid_x + 1,
+                                           state.last_y - 2,
+                                           errback_mid_x - callback_mid_x - 1)
                 state.last_x = x
                 state.last_y += cb.height + 3
                 return cb(res)
@@ -151,13 +159,14 @@ class Chain(object):
 
         def draw_start(res):
             if isinstance(res, Failure):
-                screen.draw_text(x + self.callback_width + 2, y,
+                screen.draw_text(errback_left_x, y,
                                  res.value.args[0].center(self.callback_width))
-                screen.last_x = x + self.callback_width + 2
+                state.last_x = errback_left_x
             else:
                 screen.draw_text(x, y, res.center(self.callback_width))
                 state.last_x = x
             state.last_y = y + 4
+            return res
 
         d = defer.Deferred()
 
@@ -165,7 +174,7 @@ class Chain(object):
 
         for pair in self.pairs:
             callback = wrap_callback(pair[0], x)
-            errback = wrap_callback(pair[1], x + self.callback_width + 2)
+            errback = wrap_callback(pair[1], errback_left_x)
             d.addCallbacks(callback, errback)
 
         return d
@@ -267,7 +276,7 @@ def main():
     screen = Screen()
 
     chain.draw_callback(screen, 0, 0, 'initial')
-    chain.draw_callback(screen, chain.width + 12, 0, 'initial')
+    chain.draw_errback(screen, chain.width + 12, 0, 'initial')
 
     print screen
 
