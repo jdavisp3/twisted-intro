@@ -107,7 +107,7 @@ class Chain(object):
             s += repr(p) + '\n'
         return s
 
-    def draw_chain(self, screen, x, y):
+    def draw(self, screen, x, y):
         for callback, errback in self.pairs:
             callback.draw(screen, x, y, self.callback_width)
             errback.draw(screen, x + self.callback_width + 2,
@@ -122,11 +122,31 @@ class Chain(object):
         d = self.make_drawing_deferred(screen, x, y)
         d.errback(Exception(result))
 
-    def make_drawing_deferred(self, screen, x, y):
-        callback_mid_x = x - 1 + self.callback_width / 2
 
-        errback_left_x = x + self.callback_width + 2
-        errback_mid_x = errback_left_x + self.callback_width / 2
+class FiredChain(object):
+    """A visualization of a fired chain."""
+
+    def __init__(self, chain, method):
+        self.chain = chain
+        self.method = method
+        self.height = chain.height + 10
+        self.width = chain.width
+
+    def draw(self, screen, x, y, result):
+        d = self.make_drawing_deferred(screen, x, y)
+
+        if self.method == 'callback':
+            d.callback(result)
+        else:
+            d.errback(Exception(result))
+
+    def make_drawing_deferred(self, screen, x, y):
+        callback_width = self.chain.callback_width
+
+        callback_mid_x = x - 1 + callback_width / 2
+
+        errback_left_x = x + callback_width + 2
+        errback_mid_x = errback_left_x + callback_width / 2
 
         class DrawState(object):
             last_x = None
@@ -136,9 +156,9 @@ class Chain(object):
 
         def wrap_callback(cb, x):
             def callback(res):
-                cb.draw(screen, x, state.last_y, self.callback_width)
+                cb.draw(screen, x, state.last_y, callback_width)
                 if state.last_x == x:
-                    screen.draw_vert_line(x - 1 + self.callback_width / 2,
+                    screen.draw_vert_line(x - 1 + callback_width / 2,
                                           state.last_y - 3, 3)
                 elif state.last_x < x:
                     screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
@@ -160,10 +180,10 @@ class Chain(object):
         def draw_start(res):
             if isinstance(res, Failure):
                 screen.draw_text(errback_left_x, y,
-                                 res.value.args[0].center(self.callback_width))
+                                 res.value.args[0].center(callback_width))
                 state.last_x = errback_left_x
             else:
-                screen.draw_text(x, y, res.center(self.callback_width))
+                screen.draw_text(x, y, res.center(callback_width))
                 state.last_x = x
             state.last_y = y + 4
             return res
@@ -172,7 +192,7 @@ class Chain(object):
 
         d.addBoth(draw_start)
 
-        for pair in self.pairs:
+        for pair in self.chain.pairs:
             callback = wrap_callback(pair[0], x)
             errback = wrap_callback(pair[1], errback_left_x)
             d.addCallbacks(callback, errback)
@@ -272,11 +292,13 @@ def main():
     parse_args()
 
     chain = Chain(get_pairs())
+    callback = FiredChain(chain, 'callback')
+    errback = FiredChain(chain, 'errback')
 
     screen = Screen()
 
-    chain.draw_callback(screen, 0, 0, 'initial')
-    chain.draw_errback(screen, chain.width + 12, 0, 'initial')
+    callback.draw(screen, 0, 0, 'initial')
+    errback.draw(screen, chain.width + 12, 0, 'initial')
 
     print screen
 
