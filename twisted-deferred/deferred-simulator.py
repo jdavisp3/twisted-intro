@@ -36,9 +36,12 @@ class Screen(object):
         for i in range(width):
             self.draw_char(x + i, y, '-')
 
-    def draw_vert_line(self, x, y, height):
+    def draw_vert_line(self, x, y, height, end_arrow=False):
         for i in range(height):
             self.draw_char(x, y + i, '|')
+        if end_arrow:
+            self.draw_char(x - 1, y + height - 1, '\\')
+            self.draw_char(x + 1, y + height - 1, '/')
 
     def draw_text(self, x, y, text):
         for i, char in enumerate(text):
@@ -99,7 +102,7 @@ class Callback(object):
         screen.draw_text(x + 1, y + 2, repr(self).center(width - 2))
 
 
-class DeferredWidget(object):
+class Deferred(object):
     """An widget for a deferred."""
 
     def __init__(self, pairs):
@@ -112,12 +115,6 @@ class DeferredWidget(object):
         self.height = Callback.height * len(self.pairs)
         self.height += 3 * len(self.pairs[1:])
 
-    def __repr__(self):
-        s = ''
-        for p in self.pairs:
-            s += repr(p) + '\n'
-        return s
-
     def draw(self, screen, x, y):
         for callback, errback in self.pairs:
             callback.draw(screen, x, y, self.callback_width)
@@ -125,17 +122,9 @@ class DeferredWidget(object):
                          y, self.callback_width)
             y += Callback.height + 3
 
-    def draw_callback(self, screen, x, y, result):
-        d = self.make_drawing_deferred(screen, x, y)
-        d.callback(result)
-
-    def draw_errback(self, screen, x, y, result):
-        d = self.make_drawing_deferred(screen, x, y)
-        d.errback(Exception(result))
-
 
 class FiredDeferred(object):
-    """A visualization of a fired deferred."""
+    """A widget for a fired deferred."""
 
     def __init__(self, deferred, method):
         self.deferred = deferred
@@ -170,16 +159,18 @@ class FiredDeferred(object):
                 cb.draw(screen, x, state.last_y, callback_width)
                 if state.last_x == x:
                     screen.draw_vert_line(x - 1 + callback_width / 2,
-                                          state.last_y - 3, 3)
+                                          state.last_y - 3, 3, True)
                 elif state.last_x < x:
                     screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
-                    screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2)
+                    screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2,
+                                          True)
                     screen.draw_horiz_line(callback_mid_x + 1,
                                            state.last_y - 2,
                                            errback_mid_x - callback_mid_x - 1)
                 else:
                     screen.draw_vert_line(errback_mid_x, state.last_y - 3, 2)
-                    screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2)
+                    screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2,
+                                          True)
                     screen.draw_horiz_line(callback_mid_x + 1,
                                            state.last_y - 2,
                                            errback_mid_x - callback_mid_x - 1)
@@ -199,6 +190,14 @@ class FiredDeferred(object):
             state.last_y = y + 4
             return res
 
+        def draw_end(res):
+            if isinstance(res, Failure):
+                screen.draw_text(errback_left_x, state.last_y,
+                                 res.value.args[0].center(callback_width))
+            else:
+                screen.draw_text(x, state.last_y,
+                                 res.center(callback_width))
+
         d = defer.Deferred()
 
         d.addBoth(draw_start)
@@ -207,6 +206,8 @@ class FiredDeferred(object):
             callback = wrap_callback(pair[0], x)
             errback = wrap_callback(pair[1], errback_left_x)
             d.addCallbacks(callback, errback)
+
+        d.addBoth(draw_end)
 
         return d
 
@@ -305,7 +306,7 @@ Enter a blank line when you are done.
 def main():
     parse_args()
 
-    d = DeferredWidget(get_pairs())
+    d = Deferred(get_pairs())
     callback = FiredDeferred(d, 'callback')
     errback = FiredDeferred(d, 'errback')
 
