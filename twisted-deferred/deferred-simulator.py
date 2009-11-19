@@ -59,26 +59,37 @@ class Screen(object):
         
 
 class Callback(object):
-    """A single callback or errback."""
+    """
+    A widget representing a single callback or errback.
+
+    Each callback widget has one of three styles:
+
+      return - a callback that returns a given value
+      fail - a callback that raises an Exception(value)
+      passthru - a callback that returns its argument unchanged
+
+    The widget is also a callable that behaves according
+    to the widget's style.
+    """
 
     height = 5
 
-    def __init__(self, style, argument=None):
+    def __init__(self, style, value=None):
         self.style = style
-        self.argument = argument
+        self.value = value
         self.min_width = len(repr(self)) + 4
 
     def __call__(self, res):
         if self.style == 'return':
-            return self.argument
+            return self.value
         if self.style == 'fail':
-            raise Exception(self.argument)
+            raise Exception(self.value)
         return res
 
     def __repr__(self):
         if self.style == 'passthru':
             return 'passthru'
-        return self.style + ' ' + self.argument
+        return self.style + ' ' + self.value
 
     def draw(self, screen, x, y, width):
         screen.draw_horiz_line(x, y, width)
@@ -89,7 +100,7 @@ class Callback(object):
 
 
 class DeferredWidget(object):
-    """An ascii widget for a deferred."""
+    """An widget for a deferred."""
 
     def __init__(self, pairs):
         assert pairs
@@ -123,8 +134,8 @@ class DeferredWidget(object):
         d.errback(Exception(result))
 
 
-class FiredChain(object):
-    """A visualization of a fired chain."""
+class FiredDeferred(object):
+    """A visualization of a fired deferred."""
 
     def __init__(self, deferred, method):
         self.deferred = deferred
@@ -239,7 +250,10 @@ def get_next_pair():
 
 
 def get_pairs():
-    """Get the list of callback/errback pairs from the user."""
+    """
+    Get the list of callback/errback pairs from the user.
+    They are returned as Callback widgets.
+    """
 
     print """\
 Enter a callback/errback pairs in the form:
@@ -292,8 +306,8 @@ def main():
     parse_args()
 
     d = DeferredWidget(get_pairs())
-    callback = FiredChain(d, 'callback')
-    errback = FiredChain(d, 'errback')
+    callback = FiredDeferred(d, 'callback')
+    errback = FiredDeferred(d, 'errback')
 
     screen = Screen()
 
