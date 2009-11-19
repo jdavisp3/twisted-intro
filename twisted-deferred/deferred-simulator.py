@@ -172,7 +172,7 @@ class FiredDeferred(object):
                 screen.draw_horiz_line(callback_mid_x + 1,
                                        state.last_y - 2,
                                        errback_mid_x - callback_mid_x - 1)
-            
+
         def wrap_callback(cb, x):
             def callback(res):
                 cb.draw(screen, x, state.last_y, callback_width)
@@ -184,8 +184,9 @@ class FiredDeferred(object):
 
         def draw_start(res):
             if isinstance(res, Failure):
-                screen.draw_text(errback_left_x, y,
-                                 res.value.args[0].center(callback_width))
+                text = 'Exception(%s)' % (res.value.args[0],)
+                screen.draw_text(errback_left_x - 10, y,
+                                 text.center(callback_width + 20))
                 state.last_x = errback_left_x
             else:
                 screen.draw_text(x, y, res.center(callback_width))
@@ -196,8 +197,9 @@ class FiredDeferred(object):
         def draw_end(res):
             if isinstance(res, Failure):
                 draw_connection(errback_left_x)
-                screen.draw_text(errback_left_x, state.last_y,
-                                 res.value.args[0].center(callback_width))
+                text = 'Exception(%s)' % (res.value.args[0],)
+                screen.draw_text(errback_left_x - 10, state.last_y,
+                                 text.center(callback_width + 20))
             else:
                 draw_connection(x)
                 screen.draw_text(x, state.last_y,
