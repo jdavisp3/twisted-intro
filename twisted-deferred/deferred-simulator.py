@@ -103,7 +103,12 @@ class Callback(object):
 
 
 class Deferred(object):
-    """An widget for a deferred."""
+    """
+    An widget for a deferred.
+
+    It is initialize with a non-empty list of Callback pairs,
+    representing a callback chain in a Twisted Deferred.
+    """
 
     def __init__(self, pairs):
         assert pairs
@@ -116,6 +121,10 @@ class Deferred(object):
         self.height += 3 * len(self.pairs[1:])
 
     def draw(self, screen, x, y):
+        """
+        Draw a representation of the callback/errback chain
+        on the given screen at the given coordinates.
+        """
         for callback, errback in self.pairs:
             callback.draw(screen, x, y, self.callback_width)
             errback.draw(screen, x + self.callback_width + 2,
@@ -124,7 +133,13 @@ class Deferred(object):
 
 
 class FiredDeferred(object):
-    """A widget for a fired deferred."""
+    """
+    A widget for a fired deferred.
+
+    It is initialized with a Deferred widget (not a real deferred)
+    and the method name ('callback' or 'errback') to draw the firing
+    sequence for.
+    """
 
     def __init__(self, deferred, method):
         self.deferred = deferred
@@ -141,6 +156,11 @@ class FiredDeferred(object):
             d.errback(Exception(result))
 
     def make_drawing_deferred(self, screen, x, y):
+        """
+        Return a new deferred that, when fired, will draw its
+        firing sequence onto the given screen at the given coordinates.
+        """
+
         callback_width = self.deferred.callback_width
 
         callback_mid_x = x - 1 + callback_width / 2
