@@ -158,20 +158,20 @@ class FiredDeferred(object):
             if state.last_x == x:
                 screen.draw_vert_line(x - 1 + callback_width / 2,
                                       state.last_y - 3, 3, True)
-            elif state.last_x < x:
+                return
+
+            if state.last_x < x:
                 screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
-                screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2,
-                                      True)
-                screen.draw_horiz_line(callback_mid_x + 1,
-                                       state.last_y - 2,
-                                       errback_mid_x - callback_mid_x - 1)
+                screen.draw_vert_line(errback_mid_x,
+                                      state.last_y - 2, 2, True)
             else:
                 screen.draw_vert_line(errback_mid_x, state.last_y - 3, 2)
-                screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2,
-                                      True)
-                screen.draw_horiz_line(callback_mid_x + 1,
-                                       state.last_y - 2,
-                                       errback_mid_x - callback_mid_x - 1)
+                screen.draw_vert_line(callback_mid_x,
+                                      state.last_y - 2, 2, True)
+
+            screen.draw_horiz_line(callback_mid_x + 1,
+                                   state.last_y - 2,
+                                   errback_mid_x - callback_mid_x - 1)
 
         def wrap_callback(cb, x):
             def callback(res):
@@ -182,28 +182,29 @@ class FiredDeferred(object):
                 return cb(res)
             return callback
 
-        def draw_start(res):
+        def draw_value(res, y):
             if isinstance(res, Failure):
                 text = 'Exception(%s)' % (res.value.args[0],)
-                screen.draw_text(errback_left_x - 10, y,
-                                 text.center(callback_width + 20))
-                state.last_x = errback_left_x
+                text = text.center(callback_width + 20)
+                screen.draw_text(errback_left_x - 10, y, text)
             else:
                 screen.draw_text(x, y, res.center(callback_width))
+
+        def draw_start(res):
+            draw_value(res, y)
+            if isinstance(res, Failure):
+                state.last_x = errback_left_x
+            else:
                 state.last_x = x
             state.last_y = y + 4
             return res
 
         def draw_end(res):
+            draw_value(res, state.last_y)
             if isinstance(res, Failure):
                 draw_connection(errback_left_x)
-                text = 'Exception(%s)' % (res.value.args[0],)
-                screen.draw_text(errback_left_x - 10, state.last_y,
-                                 text.center(callback_width + 20))
             else:
                 draw_connection(x)
-                screen.draw_text(x, state.last_y,
-                                 res.center(callback_width))
 
         d = defer.Deferred()
 
