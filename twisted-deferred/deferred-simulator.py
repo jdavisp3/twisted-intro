@@ -88,8 +88,8 @@ class Callback(object):
         screen.draw_text(x + 1, y + 2, repr(self).center(width - 2))
 
 
-class Chain(object):
-    """A chain of callback/errback pairs."""
+class DeferredWidget(object):
+    """An ascii widget for a deferred."""
 
     def __init__(self, pairs):
         assert pairs
@@ -126,11 +126,11 @@ class Chain(object):
 class FiredChain(object):
     """A visualization of a fired chain."""
 
-    def __init__(self, chain, method):
-        self.chain = chain
+    def __init__(self, deferred, method):
+        self.deferred = deferred
         self.method = method
-        self.height = chain.height + 10
-        self.width = chain.width
+        self.height = deferred.height + 10
+        self.width = deferred.width
 
     def draw(self, screen, x, y, result):
         d = self.make_drawing_deferred(screen, x, y)
@@ -141,7 +141,7 @@ class FiredChain(object):
             d.errback(Exception(result))
 
     def make_drawing_deferred(self, screen, x, y):
-        callback_width = self.chain.callback_width
+        callback_width = self.deferred.callback_width
 
         callback_mid_x = x - 1 + callback_width / 2
 
@@ -192,7 +192,7 @@ class FiredChain(object):
 
         d.addBoth(draw_start)
 
-        for pair in self.chain.pairs:
+        for pair in self.deferred.pairs:
             callback = wrap_callback(pair[0], x)
             errback = wrap_callback(pair[1], errback_left_x)
             d.addCallbacks(callback, errback)
@@ -291,14 +291,14 @@ Enter a blank line when you are done.
 def main():
     parse_args()
 
-    chain = Chain(get_pairs())
-    callback = FiredChain(chain, 'callback')
-    errback = FiredChain(chain, 'errback')
+    d = DeferredWidget(get_pairs())
+    callback = FiredChain(d, 'callback')
+    errback = FiredChain(d, 'errback')
 
     screen = Screen()
 
     callback.draw(screen, 0, 0, 'initial')
-    errback.draw(screen, chain.width + 12, 0, 'initial')
+    errback.draw(screen, d.width + 12, 0, 'initial')
 
     print screen
 
