@@ -146,7 +146,7 @@ class FiredDeferred(object):
         callback_mid_x = x - 1 + callback_width / 2
 
         errback_left_x = x + callback_width + 2
-        errback_mid_x = errback_left_x + callback_width / 2
+        errback_mid_x = errback_left_x - 1 + callback_width / 2
 
         class DrawState(object):
             last_x = None
@@ -154,26 +154,29 @@ class FiredDeferred(object):
 
         state = DrawState()
 
+        def draw_connection(x):
+            if state.last_x == x:
+                screen.draw_vert_line(x - 1 + callback_width / 2,
+                                      state.last_y - 3, 3, True)
+            elif state.last_x < x:
+                screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
+                screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2,
+                                      True)
+                screen.draw_horiz_line(callback_mid_x + 1,
+                                       state.last_y - 2,
+                                       errback_mid_x - callback_mid_x - 1)
+            else:
+                screen.draw_vert_line(errback_mid_x, state.last_y - 3, 2)
+                screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2,
+                                      True)
+                screen.draw_horiz_line(callback_mid_x + 1,
+                                       state.last_y - 2,
+                                       errback_mid_x - callback_mid_x - 1)
+            
         def wrap_callback(cb, x):
             def callback(res):
                 cb.draw(screen, x, state.last_y, callback_width)
-                if state.last_x == x:
-                    screen.draw_vert_line(x - 1 + callback_width / 2,
-                                          state.last_y - 3, 3, True)
-                elif state.last_x < x:
-                    screen.draw_vert_line(callback_mid_x, state.last_y - 3, 2)
-                    screen.draw_vert_line(errback_mid_x, state.last_y - 2, 2,
-                                          True)
-                    screen.draw_horiz_line(callback_mid_x + 1,
-                                           state.last_y - 2,
-                                           errback_mid_x - callback_mid_x - 1)
-                else:
-                    screen.draw_vert_line(errback_mid_x, state.last_y - 3, 2)
-                    screen.draw_vert_line(callback_mid_x, state.last_y - 2, 2,
-                                          True)
-                    screen.draw_horiz_line(callback_mid_x + 1,
-                                           state.last_y - 2,
-                                           errback_mid_x - callback_mid_x - 1)
+                draw_connection(x)
                 state.last_x = x
                 state.last_y += cb.height + 3
                 return cb(res)
@@ -192,9 +195,11 @@ class FiredDeferred(object):
 
         def draw_end(res):
             if isinstance(res, Failure):
+                draw_connection(errback_left_x)
                 screen.draw_text(errback_left_x, state.last_y,
                                  res.value.args[0].center(callback_width))
             else:
+                draw_connection(x)
                 screen.draw_text(x, state.last_y,
                                  res.center(callback_width))
 
