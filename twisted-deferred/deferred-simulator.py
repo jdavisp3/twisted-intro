@@ -340,8 +340,9 @@ def main():
 
     screen = Screen()
 
-    callback.draw(screen, 0, 0, 'initial')
-    errback.draw(screen, d.width + 12, 0, 'initial')
+    d.draw(screen, 0, 4)
+    callback.draw(screen, d.width + 4, 0, 'initial')
+    errback.draw(screen, d.width + 4 + callback.width + 4, 0, 'initial')
 
     print screen
 
