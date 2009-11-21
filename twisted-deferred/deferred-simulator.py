@@ -17,6 +17,9 @@ class BadInput(Exception): pass
 def parse_args():
     parser = optparse.OptionParser(usage=__doc__)
 
+    help = "draw all three chains next to each other"
+    parser.add_option('-w', '--wide', action='store_true', help=help)
+
     options, args = parser.parse_args()
 
     if args:
@@ -366,14 +369,21 @@ def draw_single_column(d, callback, errback):
     print screen
 
 
+def draw_multi_column(d, callback, errback):
+    pass
+
+
 def main():
-    parse_args()
+    options = parse_args()
 
     d = Deferred(get_pairs())
     callback = FiredDeferred(d, 'callback')
     errback = FiredDeferred(d, 'errback')
 
-    draw_single_column(d, callback, errback)
+    if options.wide:
+        draw_multi_column(d, callback, errback)
+    else:
+        draw_single_column(d, callback, errback)
 
 
 if __name__ == '__main__':
