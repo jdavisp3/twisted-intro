@@ -22,6 +22,8 @@ def parse_args():
     if args:
         parser.error('No arguments supported.')
 
+    return options
+
 
 class Screen(object):
     """An ascii screen."""
@@ -46,6 +48,9 @@ class Screen(object):
     def draw_text(self, x, y, text):
         for i, char in enumerate(text):
             self.draw_char(x + i, y, char)
+
+    def clear(self):
+        self.pixels.clear()
 
     def __str__(self):
         width = max([p[0] + 1 for p in self.pixels] + [0])
@@ -331,6 +336,36 @@ Enter a blank line when you are done.
     return pairs
 
 
+def draw_single_column(d, callback, errback):
+    screen = Screen()
+
+    screen.draw_text(0, 0, '=' * d.width)
+    screen.draw_text(0, 1, 'Deferred'.center(d.width))
+    screen.draw_text(0, 2, '--------'.center(d.width))
+
+    d.draw(screen, 0, 4)
+
+    print screen
+
+    screen.clear()
+
+    screen.draw_text(0, 0, '=' * d.width)
+    screen.draw_text(0, 2, 'Callback'.center(d.width))
+    screen.draw_text(0, 3, '--------'.center(d.width))
+    callback.draw(screen, 0, 5, 'initial')
+
+    print screen
+
+    screen.clear()
+
+    screen.draw_text(0, 0, '=' * d.width)
+    screen.draw_text(0, 2, 'Errback'.center(d.width))
+    screen.draw_text(0, 3, '-------'.center(d.width))
+    errback.draw(screen, 0, 5, 'initial')
+
+    print screen
+
+
 def main():
     parse_args()
 
@@ -338,13 +373,7 @@ def main():
     callback = FiredDeferred(d, 'callback')
     errback = FiredDeferred(d, 'errback')
 
-    screen = Screen()
-
-    d.draw(screen, 0, 4)
-    callback.draw(screen, d.width + 4, 0, 'initial')
-    errback.draw(screen, d.width + 4 + callback.width + 4, 0, 'initial')
-
-    print screen
+    draw_single_column(d, callback, errback)
 
 
 if __name__ == '__main__':
