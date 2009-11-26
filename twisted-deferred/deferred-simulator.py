@@ -154,7 +154,7 @@ class FiredDeferred(object):
     def __init__(self, deferred, method):
         self.deferred = deferred
         self.method = method
-        self.height = deferred.height + 10
+        self.height = deferred.height + 8
         self.width = deferred.width
 
     def draw(self, screen, x, y, result='initial'):
@@ -374,13 +374,21 @@ def draw_single_column(d, callback, errback):
 def draw_multi_column(d, callback, errback):
     screen = Screen()
 
-#    screen.draw_text(0, 0, 'Deferred'.center(d.width))
-#    screen.draw_text(0, 2, '--------'.center(d.width))
+    screen.draw_text(0, 0, 'Deferred'.center(d.width))
+    screen.draw_text(0, 1, '--------'.center(d.width))
 
-    d.draw(screen, 0, callback.callback_y_offset)
+    screen.draw_text(d.width + 6, 0, 'Callback'.center(d.width))
+    screen.draw_text(d.width + 6, 1, '--------'.center(d.width))
 
-    callback.draw(screen, d.width + 3, 0)
-    errback.draw(screen, 2 * (d.width + 3), 0)
+    screen.draw_text(2 * (d.width + 6), 0, 'Errback'.center(d.width))
+    screen.draw_text(2 * (d.width + 6), 1, '-------'.center(d.width))
+
+    d.draw(screen, 0, callback.callback_y_offset + 3)
+    callback.draw(screen, d.width + 6, 3)
+    errback.draw(screen, 2 * (d.width + 6), 3)
+
+    screen.draw_vert_line(d.width + 3, 3, callback.height)
+    screen.draw_vert_line(d.width + 3 + d.width + 6, 3, callback.height)
 
     print screen
 
