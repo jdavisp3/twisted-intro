@@ -223,13 +223,18 @@
        width="160.228"
        height="205.23199"
        x="271.35367"
-       y="53.171745" />
+       y="53.171745"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90" />
     <text
        xml:space="preserve"
        style="font-size:15.99998569px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
        x="289.55365"
        y="78.171745"
-       id="text2403-1"><tspan
+       id="text2403-1"
+       inkscape:export-filename="/home/dave/src/twisted-intro/images/rect4851.png"
+       inkscape:export-xdpi="90"
+       inkscape:export-ydpi="90"><tspan
          sodipodi:role="line"
          id="tspan2405-6"
          x="289.55365"
