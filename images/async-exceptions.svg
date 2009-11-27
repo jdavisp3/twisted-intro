@@ -165,7 +165,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="2"
      inkscape:cx="273.43216"
-     inkscape:cy="105.09801"
+     inkscape:cy="104.84801"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -227,13 +227,13 @@
     <text
        xml:space="preserve"
        style="font-size:15.99998569px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;font-family:Andale Mono;-inkscape-font-specification:Andale Mono"
-       x="308.74115"
+       x="289.55365"
        y="78.171745"
        id="text2403-1"><tspan
          sodipodi:role="line"
          id="tspan2405-6"
-         x="308.74115"
-         y="78.171745">reactor()</tspan></text>
+         x="289.55365"
+         y="78.171745">reactor.run()</tspan></text>
     <path
        sodipodi:type="arc"
        style="fill:#000000;fill-opacity:1;stroke:#000000;stroke-width:1;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:none"
