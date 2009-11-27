@@ -17,8 +17,8 @@ class BadInput(Exception): pass
 def parse_args():
     parser = optparse.OptionParser(usage=__doc__)
 
-    help = "draw all three chains next to each other"
-    parser.add_option('-w', '--wide', action='store_true', help=help)
+    help = "draw all three chains in one column"
+    parser.add_option('-1', '--narrow', action='store_true', help=help)
 
     options, args = parser.parse_args()
 
@@ -344,7 +344,6 @@ Enter a blank line when you are done.
 def draw_single_column(d, callback, errback):
     screen = Screen()
 
-    screen.draw_text(0, 0, '=' * d.width)
     screen.draw_text(0, 1, 'Deferred'.center(d.width))
     screen.draw_text(0, 2, '--------'.center(d.width))
 
@@ -354,18 +353,18 @@ def draw_single_column(d, callback, errback):
 
     screen.clear()
 
-    screen.draw_text(0, 0, '=' * d.width)
-    screen.draw_text(0, 2, 'Callback'.center(d.width))
-    screen.draw_text(0, 3, '--------'.center(d.width))
+    screen.draw_text(0, 2, 'd.callback(initial)'.center(d.width))
+    screen.draw_text(0, 3, '-------------------'.center(d.width))
+
     callback.draw(screen, 0, 5)
 
     print screen
 
     screen.clear()
 
-    screen.draw_text(0, 0, '=' * d.width)
-    screen.draw_text(0, 2, 'Errback'.center(d.width))
-    screen.draw_text(0, 3, '-------'.center(d.width))
+    screen.draw_text(0, 2, 'd.errback(Exception(initial))'.center(d.width))
+    screen.draw_text(0, 3, '-----------------------------'.center(d.width))
+
     errback.draw(screen, 0, 5)
 
     print screen
@@ -377,11 +376,11 @@ def draw_multi_column(d, callback, errback):
     screen.draw_text(0, 0, 'Deferred'.center(d.width))
     screen.draw_text(0, 1, '--------'.center(d.width))
 
-    screen.draw_text(d.width + 6, 0, 'Callback'.center(d.width))
-    screen.draw_text(d.width + 6, 1, '--------'.center(d.width))
+    screen.draw_text(d.width + 6, 0, 'd.callback(initial)'.center(d.width))
+    screen.draw_text(d.width + 6, 1, '-------------------'.center(d.width))
 
-    screen.draw_text(2 * (d.width + 6), 0, 'Errback'.center(d.width))
-    screen.draw_text(2 * (d.width + 6), 1, '-------'.center(d.width))
+    screen.draw_text(2 * (d.width + 6), 0, 'd.errback(Exception(initial))'.center(d.width))
+    screen.draw_text(2 * (d.width + 6), 1, '----------------------------'.center(d.width))
 
     d.draw(screen, 0, callback.callback_y_offset + 3)
     callback.draw(screen, d.width + 6, 3)
@@ -400,10 +399,10 @@ def main():
     callback = FiredDeferred(d, 'callback')
     errback = FiredDeferred(d, 'errback')
 
-    if options.wide:
-        draw_multi_column(d, callback, errback)
-    else:
+    if options.narrow:
         draw_single_column(d, callback, errback)
+    else:
+        draw_multi_column(d, callback, errback)
 
 
 if __name__ == '__main__':
