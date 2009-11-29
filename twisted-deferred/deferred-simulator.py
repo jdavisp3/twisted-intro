@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import optparse
+import optparse, sys
 
 from twisted.internet import defer
 from twisted.python.failure import Failure
@@ -286,11 +286,20 @@ def get_next_pair():
         if cmd in ('return', 'fail'):
             if not parts:
                 raise BadInput('missing argument')
-            return Callback(cmd, parts.pop(0))
+
+            result = parts.pop(0)
+
+            if len(result) > 10:
+                raise BadInput('result too long', result)
+
+            return Callback(cmd, result)
         else:
             return Callback(cmd)
 
-    line = raw_input()
+    try:
+        line = raw_input()
+    except EOFError:
+        sys.exit()
 
     if not line:
         return None
