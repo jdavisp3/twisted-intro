@@ -231,7 +231,7 @@ class FiredDeferred(object):
 
         def draw_value(res, y):
             if isinstance(res, Failure):
-                text = 'Exception(%s)' % (res.value.args[0],)
+                text = res.value.args[0] + '*'
                 text = text.center(callback_width + 20)
                 screen.draw_text(errback_left_x - 10, y, text)
             else:
@@ -341,9 +341,17 @@ Examples:
                         # and errback raises Exception('terrible')
 
   f googly p # callback raises Exception('googly')
-             # and errback passes it's failure along
+             # and errback passes its failure along
 
-Enter a blank line when you are done.
+The values must be no more than 10 characters long.
+
+Enter a blank line when you are done, and a diagram of the
+derred will be printed out alongside the firing pattern for
+both the callback() and errback() methods. In the diagram,
+a value followed by '*' is really an Exception wrapped in
+a Failure, i.e:
+
+  value* == Failure(Exception(value))
 """
 
     pairs = []
@@ -388,8 +396,8 @@ def draw_single_column(d, callback, errback):
 
     screen.clear()
 
-    screen.draw_text(0, 2, 'd.errback(Exception(initial))'.center(d.width))
-    screen.draw_text(0, 3, '-----------------------------'.center(d.width))
+    screen.draw_text(0, 2, 'd.errback(initial*)'.center(d.width))
+    screen.draw_text(0, 3, '-------------------'.center(d.width))
 
     errback.draw(screen, 0, 5)
 
@@ -405,8 +413,8 @@ def draw_multi_column(d, callback, errback):
     screen.draw_text(d.width + 6, 0, 'd.callback(initial)'.center(d.width))
     screen.draw_text(d.width + 6, 1, '-------------------'.center(d.width))
 
-    screen.draw_text(2 * (d.width + 6), 0, 'd.errback(Exception(initial))'.center(d.width))
-    screen.draw_text(2 * (d.width + 6), 1, '----------------------------'.center(d.width))
+    screen.draw_text(2 * (d.width + 6), 0, 'd.errback(initial*)'.center(d.width))
+    screen.draw_text(2 * (d.width + 6), 1, '-------------------'.center(d.width))
 
     d.draw(screen, 0, callback.callback_y_offset + 3)
     callback.draw(screen, d.width + 6, 3)
