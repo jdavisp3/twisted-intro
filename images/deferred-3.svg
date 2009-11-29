@@ -17,7 +17,7 @@
    version="1.0"
    sodipodi:docname="deferred-3.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/dave/src/twisted-intro/images/deferred-2.png"
+   inkscape:export-filename="/home/dave/src/twisted-intro/images/deferred-3.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -354,6 +354,26 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          transform="scale(-0.6,-0.6)" />
     </marker>
+    <inkscape:perspective
+       id="perspective8100"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow2Mend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Mend-5"
+       style="overflow:visible">
+      <path
+         id="path7124-45"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="scale(-0.6,-0.6)" />
+    </marker>
   </defs>
   <sodipodi:namedview
      id="base"
@@ -367,7 +387,7 @@
      inkscape:pageshadow="2"
      inkscape:zoom="1.4412929"
      inkscape:cx="172.60784"
-     inkscape:cy="175.73148"
+     inkscape:cy="147.97862"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
@@ -484,5 +504,10 @@
          id="tspan8090"
          x="118.07087"
          y="-152.14203">callback(...)</tspan></text>
+    <path
+       style="fill:#ff0000;fill-opacity:1;stroke:#3cff3c;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-end:url(#Arrow2Mend);display:inline"
+       d="m 166.47236,137.06186 0.69386,50.70681"
+       id="path6900-25-9-5"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
