@@ -88,27 +88,44 @@ class Callback(object):
     def __init__(self, style, value=None):
         self.style = style
         self.value = value
-        self.min_width = len(repr(self)) + 4
+        self.min_width = len('01234567890*') + 4
 
     def __call__(self, res):
         if self.style == 'return':
             return self.value
         if self.style == 'fail':
-            raise Exception(self.value)
+            return Failure(Exception(self.value))
         return res
 
-    def __repr__(self):
+    @property
+    def caption(self):
         if self.style == 'passthru':
             return 'passthru'
         return self.style + ' ' + self.value
 
-    def draw(self, screen, x, y, width):
+    def format_value(self, res):
+        if isinstance(res, Failure):
+            return res.value.args[0] + '*'
+        return res
+
+    def draw_passive(self, screen, x, y, width):
+        self.draw_box(screen, x, y, width)
+        self.draw_text(screen, x, y + 2, width, self.caption)
+
+    def draw_active(self, screen, x, y, width, res):
+        self.draw_box(screen, x, y, width)
+        self.draw_text(screen, x, y + 1, width, self.format_value(res))
+        self.draw_text(screen, x, y + 3, width, self.format_value(self(res)))
+
+    def draw_box(self, screen, x, y, width):
         screen.draw_horiz_line(x, y, width)
         screen.draw_horiz_line(x, y + 4, width)
         screen.draw_vert_line(x, y + 1, 3)
         screen.draw_vert_line(x + width - 1, y + 1, 3)
-        screen.draw_text(x + 1, y + 2, repr(self).center(width - 2))
 
+    def draw_text(self, screen, x, y, width, text):
+        screen.draw_text(x + 1, y, text.center(width - 2))
+        
 
 class Deferred(object):
     """
@@ -134,9 +151,9 @@ class Deferred(object):
         on the given screen at the given coordinates.
         """
         for callback, errback in self.pairs:
-            callback.draw(screen, x, y, self.callback_width)
-            errback.draw(screen, x + self.callback_width + 2,
-                         y, self.callback_width)
+            callback.draw_passive(screen, x, y, self.callback_width)
+            errback.draw_passive(screen, x + self.callback_width + 2,
+                                 y, self.callback_width)
             y += Callback.height + 3
 
 
@@ -205,7 +222,7 @@ class FiredDeferred(object):
 
         def wrap_callback(cb, x):
             def callback(res):
-                cb.draw(screen, x, state.last_y, callback_width)
+                cb.draw_active(screen, x, state.last_y, callback_width, res)
                 draw_connection(x)
                 state.last_x = x
                 state.last_y += cb.height + 3
