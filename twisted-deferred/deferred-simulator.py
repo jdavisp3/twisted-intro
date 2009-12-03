@@ -88,7 +88,7 @@ class Callback(object):
     def __init__(self, style, value=None):
         self.style = style
         self.value = value
-        self.min_width = len('0123456*') + len('return ') + 2
+        self.min_width = len('0123456*') + len('return ') + 3
 
     def __call__(self, res):
         if self.style == 'return':
