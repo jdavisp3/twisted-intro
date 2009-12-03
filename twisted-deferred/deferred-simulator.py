@@ -290,7 +290,7 @@ def get_next_pair():
             result = parts.pop(0)
 
             if len(result) > 6:
-                raise BadInput('result too long', result)
+                raise BadInput('result more than 6 chars long', result)
 
             return Callback(cmd, result)
         else:
