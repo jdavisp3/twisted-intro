@@ -88,7 +88,7 @@ class Callback(object):
     def __init__(self, style, value=None):
         self.style = style
         self.value = value
-        self.min_width = len('01234567890*') + 4
+        self.min_width = len('0123456*') + len('return ') + 2
 
     def __call__(self, res):
         if self.style == 'return':
@@ -289,7 +289,7 @@ def get_next_pair():
 
             result = parts.pop(0)
 
-            if len(result) > 10:
+            if len(result) > 6:
                 raise BadInput('result too long', result)
 
             return Callback(cmd, result)
@@ -337,13 +337,13 @@ You can abbreviate return/failure/passthru as r/f/p.
 
 Examples:
 
-  r awesome f terrible  # callback returns 'awesome'
-                        # and errback raises Exception('terrible')
+  r good f bad  # callback returns 'good'
+                # and errback raises Exception('bad')
 
-  f googly p # callback raises Exception('googly')
-             # and errback passes its failure along
+  f googly p    # callback raises Exception('googly')
+                # and errback passes its failure along
 
-The values must be no more than 10 characters long.
+The values must be no more than 6 characters long.
 
 Enter a blank line when you are done, and a diagram of the
 derred will be printed out alongside the firing pattern for
@@ -352,6 +352,8 @@ a value followed by '*' is really an Exception wrapped in
 a Failure, i.e:
 
   value* == Failure(Exception(value))
+
+You will want to make your terminal as wide as possible.
 """
 
     pairs = []
