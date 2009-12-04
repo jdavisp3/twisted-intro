@@ -331,7 +331,8 @@ Where CALLBACK and ERRBACK are one of:
   fail VALUE
   passthru
 
-And where VALUE is a string of only letters and numbers (no spaces).
+And where VALUE is a string of only letters and numbers (no spaces),
+no more than 6 characters long.
 
 Each pair should be on a single line and you can abbreviate
 return/fail/passthru as r/f/p.
@@ -343,8 +344,6 @@ Examples:
 
   f googly p    # callback raises Exception('googly')
                 # and errback passes its failure along
-
-The values must be no more than 6 characters long.
 
 Enter a blank line when you are done, and a diagram of the deferred
 will be printed next to the firing patterns for both the callback()
