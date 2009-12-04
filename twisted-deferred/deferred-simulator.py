@@ -346,11 +346,10 @@ Examples:
 
 The values must be no more than 6 characters long.
 
-Enter a blank line when you are done, and a diagram of the
-derred will be printed out alongside the firing pattern for
-both the callback() and errback() methods. In the diagram,
-a value followed by '*' is really an Exception wrapped in
-a Failure, i.e:
+Enter a blank line when you are done, and a diagram of the deferred
+will be printed next to the firing patterns for both the callback()
+and errback() methods. In the diagram, a value followed by '*' is
+really an Exception wrapped in a Failure, i.e:
 
   value* == Failure(Exception(value))
 
