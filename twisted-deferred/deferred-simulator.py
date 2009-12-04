@@ -18,7 +18,7 @@ def parse_args():
     parser = optparse.OptionParser(usage=__doc__)
 
     help = "draw all three chains in one column"
-    parser.add_option('-1', '--narrow', action='store_true', help=help)
+    parser.add_option('--narrow', action='store_true', help=help)
 
     options, args = parser.parse_args()
 
