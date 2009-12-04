@@ -321,7 +321,7 @@ def get_pairs():
     """
 
     print """\
-Enter a callback/errback pairs in the form:
+Enter a list of callback/errback pairs in the form:
 
   CALLBACK ERRBACK
 
@@ -333,7 +333,8 @@ Where CALLBACK and ERRBACK are one of:
 
 And where VALUE is a string of only letters and numbers (no spaces).
 
-You can abbreviate return/failure/passthru as r/f/p.
+Each pair should be on a single line and you can abbreviate
+return/fail/passthru as r/f/p.
 
 Examples:
 
