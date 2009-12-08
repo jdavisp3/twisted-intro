@@ -4,7 +4,7 @@ SOURCES=sync.svg threaded.svg async.svg block.svg \
         protocols-1.svg protocols-2.svg reactor-data-received.svg \
         reactor-poem-callback.svg deferred-1.svg deferred-2.svg \
         deferred-3.svg deferred-4.svg deferred-5.svg deferred-6.svg \
-        deferred-7.svg \
+        deferred-7.svg deferred-8.svg \
         reactor-deferred-callback.svg sync-async.svg
 IMAGES=$(SOURCES:.svg=.png)
 
