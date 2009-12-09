@@ -13,7 +13,7 @@
    height="348"
    id="svg2"
    sodipodi:version="0.32"
-   inkscape:version="0.47pre2 r22153"
+   inkscape:version="0.47pre4 r22446"
    version="1.0"
    sodipodi:docname="deferred-4.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
@@ -487,7 +487,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -627,6 +627,6 @@
          y="-128.07068"
          id="tspan8758">by <tspan
    style="font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;font-family:Courier 10 Pitch;-inkscape-font-specification:Courier 10 Pitch"
-   id="tspan8756">addCallback</tspan>.</tspan></text>
+   id="tspan8756">addCallback</tspan></tspan></text>
   </g>
 </svg>
