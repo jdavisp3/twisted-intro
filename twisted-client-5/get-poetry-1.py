@@ -103,7 +103,8 @@ def cummingsify(poem):
 
     1. Return a cummingsified version of the poem.
     2. Raise a GibberishError.
-    3. Raise a ValueError.
+    3. Raise a CannotCummingsify error with the original poem
+       as the first argument.
     """
 
     def success():
