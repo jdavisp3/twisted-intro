@@ -2,7 +2,7 @@
 
 import optparse, os
 
-from twisted.internet.protocol import Factory, Protocol
+from twisted.internet.protocol import ServerFactory, Protocol
 
 
 def parse_args():
@@ -49,7 +49,7 @@ class PoetryProtocol(Protocol):
         self.transport.loseConnection()
 
 
-class PoetryFactory(Factory):
+class PoetryFactory(ServerFactory):
 
     protocol = PoetryProtocol
 
