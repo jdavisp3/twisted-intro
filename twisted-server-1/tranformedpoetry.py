@@ -51,21 +51,22 @@ class TransformProtocol(NetstringReceiver):
             self.transport.loseConnection()
             return
 
-        tranform, poem = request.split('.', 1)
+        xform_name, poem = request.split('.', 1)
 
-        thunk = getattr(self, 'xform_%s' % (tranform,), None)
+        self.xformRequestReceived(xform_name, poem)
 
-        if thunk is None: # no such transform
+    def xformRequestReceived(self, xform_name, poem):
+        try:
+            new_poem = self.factory.transform(xform_name, poem)
+        except:
+            new_poem = None # transform failed
+
+        if new_poem is None: # no such transform
             self.transport.loseConnection()
             return
 
-        try:
-            self.transport.write(thunk(poem))
-        finally:
-            self.transport.loseConnection()
-
-    def xform_cummingsify(self, poem):
-        return self.factory.service.cummingsify(poem)
+        self.transport.write(new_poem)
+        self.transport.loseConnection()
 
 
 class TransformFactory(ServerFactory):
@@ -74,6 +75,17 @@ class TransformFactory(ServerFactory):
 
     def __init__(self, service):
         self.service = service
+
+    def transform(self, xform_name, poem):
+        thunk = getattr(self, 'xform_%s' % (xform_name,), None)
+
+        if thunk is None:
+            return None
+        else:
+            return thunk(poem)
+
+    def xform_cummingsify(self, poem):
+        return self.service.cummingsify(poem)
 
 
 def main():
