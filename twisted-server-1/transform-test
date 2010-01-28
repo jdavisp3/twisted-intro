@@ -1,0 +1,3 @@
+#!/bin/sh
+
+echo -e -n "17:cummingsify.POEM\n", | netcat localhost $1
