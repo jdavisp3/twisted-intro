@@ -62,7 +62,7 @@ class TransformProtocol(NetstringReceiver):
             self.transport.loseConnection()
             return
 
-        self.transport.write(new_poem)
+        self.sendString(new_poem)
         self.transport.loseConnection()
 
 
