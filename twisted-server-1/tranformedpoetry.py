@@ -58,11 +58,9 @@ class TransformProtocol(NetstringReceiver):
     def xformRequestReceived(self, xform_name, poem):
         new_poem = self.factory.transform(xform_name, poem)
 
-        if new_poem is None:
-            self.transport.loseConnection()
-            return
+        if new_poem is not None:
+            self.sendString(new_poem)
 
-        self.sendString(new_poem)
         self.transport.loseConnection()
 
 
