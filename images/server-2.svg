@@ -17,7 +17,7 @@
    version="1.0"
    sodipodi:docname="server-2.svg"
    inkscape:output_extension="org.inkscape.output.svg.inkscape"
-   inkscape:export-filename="/home/dave/src/twisted-intro/images/server-1.png"
+   inkscape:export-filename="/home/dave/src/twisted-intro/images/server-2.png"
    inkscape:export-xdpi="90"
    inkscape:export-ydpi="90">
   <defs
@@ -560,7 +560,7 @@
      inkscape:cx="296.63563"
      inkscape:cy="221.18528"
      inkscape:document-units="px"
-     inkscape:current-layer="layer1"
+     inkscape:current-layer="g5141"
      showgrid="false"
      inkscape:snap-bbox="true"
      inkscape:object-nodes="true"
@@ -614,7 +614,7 @@
          sodipodi:cy="186.92085"
          sodipodi:cx="-151.10661"
          id="path3647"
-         style="opacity:0.98999999;fill:#ff7d7d;fill-opacity:1;stroke:none"
+         style="opacity:0.98999999000000005;fill:#a1e7c2;fill-opacity:1;stroke:none"
          sodipodi:type="arc" />
       <text
          id="text2391-0"
@@ -634,7 +634,7 @@
          transform="translate(16.92564,27.32198)"
          id="g4269">
         <rect
-           style="opacity:0.98999999;fill:#7dff84;fill-opacity:1;stroke:none"
+           style="opacity:0.98999999000000005;fill:#6c69d6;fill-opacity:1;stroke:none"
            id="rect3686-6"
            width="79.478157"
            height="52.004227"
@@ -658,7 +658,7 @@
       <g
          id="g5775">
         <rect
-           style="opacity:0.98999999;fill:#7dffb5;fill-opacity:1;stroke:none"
+           style="opacity:0.98999999000000005;fill:#a7d164;fill-opacity:1;stroke:none"
            id="rect3686-6-9"
            width="79.478157"
            height="52.004227"
@@ -690,7 +690,7 @@
          height="52.004227"
          width="79.478157"
          id="rect3686-6-6"
-         style="opacity:0.98999999;fill:#ef7dff;fill-opacity:1;stroke:none" />
+         style="opacity:0.98999999000000005;fill:#6065aa;fill-opacity:1;stroke:none" />
       <text
          id="text2391-8-2-7"
          y="50.814243"
@@ -715,7 +715,7 @@
              height="52.004227"
              width="79.478157"
              id="rect3686-6-6-5"
-             style="opacity:0.98999999;fill:#a47dff;fill-opacity:1;stroke:none" />
+             style="opacity:0.98999999000000005;fill:#84be45;fill-opacity:1;stroke:none" />
           <text
              id="text2391-8-2-7-7"
              y="50.814243"
@@ -754,7 +754,7 @@
          transform="translate(1.2380755,-118.87857)"
          id="g5130">
         <rect
-           style="opacity:0.98999999;fill:#19bc50;fill-opacity:1;stroke:none"
+           style="opacity:0.98999999000000005;fill:#8589ed;fill-opacity:1;stroke:none"
            id="rect3686-6-9-9"
            width="79.478157"
            height="52.004227"
@@ -802,33 +802,29 @@
        id="path3999-1-61"
        sodipodi:nodetypes="cc" />
     <g
-       id="g5814"
-       transform="translate(-23.609807,-1.1136474e-6)">
-      <g
-         transform="translate(1.7583719,91.844319)"
-         id="g5130-7">
-        <rect
-           style="opacity:0.98999999;fill:#19bc7d;fill-opacity:1;stroke:none"
-           id="rect3686-6-9-9-5"
-           width="79.478157"
-           height="52.004227"
-           x="411.13821"
-           y="219.18733" />
-        <text
-           xml:space="preserve"
-           style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-           x="450.8313"
+       id="g5130-7"
+       transform="translate(-21.851435,91.844318)">
+      <rect
+         y="219.18733"
+         x="411.13821"
+         height="52.004227"
+         width="79.478157"
+         id="rect3686-6-9-9-5"
+         style="opacity:0.98999999;fill:#bde07e;fill-opacity:1;stroke:none" />
+      <text
+         id="text2391-8-2-6-0-9"
+         y="239.33345"
+         x="450.8313"
+         style="font-size:16px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;text-align:center;text-anchor:middle;fill:#000000;fill-opacity:1;stroke:none;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+         xml:space="preserve"><tspan
            y="239.33345"
-           id="text2391-8-2-6-0-9"><tspan
-             sodipodi:role="line"
-             id="tspan2393-0-74-9-3-3"
-             x="450.8313"
-             y="239.33345">Protocol</tspan><tspan
-             id="tspan5086-7"
-             sodipodi:role="line"
-             x="450.8313"
-             y="259.33344">Factory</tspan></text>
-      </g>
+           x="450.8313"
+           id="tspan2393-0-74-9-3-3"
+           sodipodi:role="line">Protocol</tspan><tspan
+           y="259.33344"
+           x="450.8313"
+           sodipodi:role="line"
+           id="tspan5086-7">Factory</tspan></text>
     </g>
     <g
        id="g5951">
@@ -838,7 +834,7 @@
          height="52.004227"
          width="79.478157"
          id="rect3686-6-9-9-7"
-         style="opacity:0.98999999;fill:#fffc47;fill-opacity:1;stroke:none" />
+         style="opacity:0.98999999000000005;fill:#eb9bb4;fill-opacity:1;stroke:none" />
       <text
          id="text2391-8-2-6-0-5"
          y="237.24033"
