@@ -56,7 +56,7 @@ deferred_2 = None # NOTE: because we aren't using a reactor, we have
 
 def callback_2_async(res):
     print 'callback_2 got', res
-    global deferred_2
+    global deferred_2 # never do this in a real program
     deferred_2 = Deferred()
     return deferred_2
 
@@ -95,3 +95,8 @@ deferred_2.callback(2)
 
 # And you get output like this:
 # callback_3 got 2
+
+print """
+Note the argument to the inner deferred's callback() method became
+the result passed to the next callback in the outer deferred.
+"""
