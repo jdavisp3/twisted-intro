@@ -83,10 +83,10 @@ d.callback(0)
 print """
 Notice the output from the third callback is missing. That's because
 the second callback returned a deferred and now the 'outer' deferred
-is 'paused'. It's not waiting in a thread or anything like that, it
-just stopped invoking the callbacks in the chain. Instead, it
-registered some callbacks on the 'inner' deferred which will start the
-outer deferred back up when the inner deferred is fired.
+is paused. It's not waiting in a thread or anything like that, it just
+stopped invoking the callbacks in the chain. Instead, it registered
+some callbacks on the 'inner' deferred which will start the outer
+deferred back up when the inner deferred is fired.
 
 We can see this in action by firing the inner deferred:
 """
