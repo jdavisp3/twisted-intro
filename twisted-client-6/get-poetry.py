@@ -163,7 +163,7 @@ def poetry_main():
         d = proxy.xform('cummingsify', poem)
 
         def fail(err):
-            print 'Cummingsify failed!'
+            print >>sys.stderr, 'Cummingsify failed!'
             return poem
 
         return d.addErrback(fail)
