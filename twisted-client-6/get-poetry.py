@@ -88,8 +88,8 @@ class TransformClientProtocol(NetstringReceiver):
         self.sendRequest(self.factory.xform_name, self.factory.poem)
 
     def stringReceived(self, s):
-        self.poemReceived(s)
         self.transport.loseConnection()
+        self.poemReceived(s)
 
     def poemReceived(self, poem):
         self.factory.handlePoem(poem)
