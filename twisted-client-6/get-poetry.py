@@ -89,6 +89,7 @@ class TransformClientProtocol(NetstringReceiver):
 
     def stringReceived(self, s):
         self.poemReceived(s)
+        self.transport.loseConnection()
 
     def poemReceived(self, poem):
         self.factory.handlePoem(poem)
