@@ -562,6 +562,33 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
     </marker>
+    <inkscape:perspective
+       id="perspective2950"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <marker
+       inkscape:stockid="Arrow2Lend"
+       orient="auto"
+       refY="0"
+       refX="0"
+       id="Arrow2Lend-7"
+       style="overflow:visible">
+      <path
+         id="path3871-63"
+         style="font-size:12px;fill-rule:evenodd;stroke-width:0.625;stroke-linejoin:round"
+         d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
+         transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
+    </marker>
+    <inkscape:perspective
+       id="perspective2991"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -574,7 +601,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="1.4412929"
-     inkscape:cx="221.10845"
+     inkscape:cx="390.96501"
      inkscape:cy="251.4152"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -618,7 +645,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -812,19 +839,42 @@
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
        x="410.06183"
-       y="53.017769"
+       y="88.402664"
        id="text7565-6-6-3"><tspan
          sodipodi:role="line"
          x="410.06183"
-         y="53.017769"
+         y="88.402664"
          id="tspan8758-4-5-4">The outer deferred</tspan><tspan
          sodipodi:role="line"
          x="410.06183"
-         y="68.017769"
+         y="103.40266"
          id="tspan6074-0">resumes when the inner</tspan><tspan
          sodipodi:role="line"
          x="410.06183"
-         y="83.017769"
+         y="118.40266"
          id="tspan6076-9">deferred is fired</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Lend);display:inline"
+       d="M 404.28072,26.950722 C 357.09523,58.876701 327.1743,32.300677 233.07164,53.103777"
+       id="path7563-4-1-1-1"
+       sodipodi:nodetypes="cc" />
+    <text
+       xml:space="preserve"
+       style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
+       x="410.06183"
+       y="10.681701"
+       id="text7565-6-6-3-8"><tspan
+         sodipodi:role="line"
+         x="410.06183"
+         y="10.681701"
+         id="tspan8758-4-5-4-0">This callback was</tspan><tspan
+         sodipodi:role="line"
+         x="410.06183"
+         y="25.681702"
+         id="tspan6076-9-1">added by the outer</tspan><tspan
+         sodipodi:role="line"
+         x="410.06183"
+         y="25.681702"
+         id="tspan3024">deferred</tspan></text>
   </g>
 </svg>
