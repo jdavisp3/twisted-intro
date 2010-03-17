@@ -2,7 +2,7 @@
 
 import optparse
 
-from twisted.internet.defer import Deferred
+from twisted.internet.defer import Deferred, maybeDeferred
 from twisted.internet.protocol import ClientFactory, ServerFactory, Protocol
 
 
@@ -52,8 +52,9 @@ to proxy the poem for the server running on port 10000.
 class PoetryProxyProtocol(Protocol):
 
     def connectionMade(self):
-        self.transport.write(self.factory.poem)
-        self.transport.loseConnection()
+        d = maybeDeferred(self.factory.service.get_poem)
+        d.addCallback(self.transport.write)
+        d.addBoth(lambda r: self.transport.loseConnection())
 
 
 class PoetryProxyFactory(ServerFactory):
@@ -96,10 +97,37 @@ class PoetryClientFactory(ClientFactory):
             d.errback(reason)
 
 
+class ProxyService(object):
+
+    poem = None # the cached poem
+
+    def __init__(self, host, port):
+        self.host = host
+        self.port = port
+
+    def get_poem(self):
+        if self.poem is not None:
+            print 'Using cached poem.'
+            return self.poem
+
+        print 'Fetching poem from server.'
+        factory = PoetryClientFactory()
+        factory.deferred.addCallback(self.set_poem)
+        from twisted.internet import reactor
+        reactor.connectTCP(self.host, self.port, factory)
+        return factory.deferred
+
+    def set_poem(self, poem):
+        self.poem = poem
+        return poem
+
+
 def main():
     options, server_addr = parse_args()
 
-    factory = PoetryFactory(poem)
+    service = ProxyService(*server_addr)
+
+    factory = PoetryProxyFactory(service)
 
     from twisted.internet import reactor
 
