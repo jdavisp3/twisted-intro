@@ -5,7 +5,7 @@ from twisted.trial.unittest import TestCase
 
 # Normally we would import the classes we want to test.
 # But to make the examples self-contained, we're just
-# copying them here.
+# copying them here, with a few modifications.
 
 class PoetryServerProtocol(Protocol):
 
