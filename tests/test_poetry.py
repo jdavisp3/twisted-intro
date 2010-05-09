@@ -91,4 +91,4 @@ class PoetryTestCase(TestCase):
         """The correct failure is returned by get_poetry when
         connecting to a port with no server."""
         d = get_poetry('127.0.0.1', -1)
-        return self.failUnlessFailure(d, ConnectionRefusedError)
+        return self.assertFailure(d, ConnectionRefusedError)
