@@ -74,7 +74,8 @@ class PoetryTestCase(TestCase):
         self.portnum = self.port.getHost().port
 
     def tearDown(self):
-        return self.port.stopListening()
+        port, self.port = self.port, None
+        return port.stopListening()
 
     def test_client(self):
         """The correct poem is returned by get_poetry."""
