@@ -4,13 +4,6 @@ from twisted.application import internet, service
 from twisted.internet.protocol import ServerFactory, Protocol
 from twisted.python import log
 
-
-# configuration parameters, used below
-port = 10000
-iface = 'localhost'
-poetry_file = 'poetry/ecstasy.txt'
-
-
 # Normally we would import these classes from another module.
 
 class PoetryProtocol(Protocol):
@@ -33,10 +26,18 @@ class PoetryFactory(ServerFactory):
 
 class PoetryService(service.Service):
 
-    def startService(self):
-        self.poem = open(poetry_file).read()
-        log.msg('loaded a poem from: %s' % (poetry_file,))
+    def __init__(self, poetry_file):
+        self.poetry_file = poetry_file
 
+    def startService(self):
+        self.poem = open(self.poetry_file).read()
+        log.msg('loaded a poem from: %s' % (self.poetry_file,))
+
+
+# configuration parameters
+port = 10000
+iface = 'localhost'
+poetry_file = 'poetry/ecstasy.txt'
 
 # this variable has to be named 'application'
 application = service.Application("fastpoetry")
@@ -45,7 +46,7 @@ application = service.Application("fastpoetry")
 top_service = service.MultiService()
 
 # the poetry service holds the poem
-poetry_service = PoetryService()
+poetry_service = PoetryService(poetry_file)
 poetry_service.setServiceParent(top_service)
 
 # the tcp service connects the factory to the listening port
