@@ -59,6 +59,6 @@ tcp_service.setServiceParent(top_service)
 # this hooks the collection we just made to the application
 top_service.setServiceParent(application)
 
-# at this point, the application is ready to go. when it is started by
-# twistd, it will start the child services, thus starting up the
+# at this point, the application is ready to go. when started by
+# twistd it will start the child services, thus starting up the
 # poetry server
