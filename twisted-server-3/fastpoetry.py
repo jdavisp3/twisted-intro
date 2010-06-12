@@ -48,14 +48,14 @@ top_service = service.MultiService()
 poetry_service = PoetryService()
 poetry_service.setServiceParent(top_service)
 
-# the tcp service connects the factory to the port
+# the tcp service connects the factory to the listening port
 factory = PoetryFactory(poetry_service)
-tcp_service = internet.TCPServer(port, factory)
+tcp_service = internet.TCPServer(port, factory, interface=iface)
 tcp_service.setServiceParent(top_service)
 
 # this hooks the collection we just made to the application
 top_service.setServiceParent(application)
 
-# at this point, the application is ready to go.
-# when it is started, it will start the child services,
-# thus starting up the poetry server
+# at this point, the application is ready to go. when it is started by
+# twistd, it will start the child services, thus starting up the
+# poetry server
