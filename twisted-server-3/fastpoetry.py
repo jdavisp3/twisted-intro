@@ -45,11 +45,13 @@ application = service.Application("fastpoetry")
 # this will hold the services that combine to form the poetry server
 top_service = service.MultiService()
 
-# the poetry service holds the poem
+# the poetry service holds the poem. it will load the poem when it is
+# started
 poetry_service = PoetryService(poetry_file)
 poetry_service.setServiceParent(top_service)
 
-# the tcp service connects the factory to the listening port
+# the tcp service connects the factory to the listening port. it will
+# create the listening socket when it is started
 factory = PoetryFactory(poetry_service)
 tcp_service = internet.TCPServer(port, factory, interface=iface)
 tcp_service.setServiceParent(top_service)
