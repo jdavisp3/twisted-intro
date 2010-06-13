@@ -50,7 +50,7 @@ top_service = service.MultiService()
 poetry_service = PoetryService(poetry_file)
 poetry_service.setServiceParent(top_service)
 
-# the tcp service connects the factory to the listening port. it will
+# the tcp service connects the factory to a listening socket. it will
 # create the listening socket when it is started
 factory = PoetryFactory(poetry_service)
 tcp_service = internet.TCPServer(port, factory, interface=iface)
