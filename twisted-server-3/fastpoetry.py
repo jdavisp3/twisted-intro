@@ -40,9 +40,6 @@ port = 10000
 iface = 'localhost'
 poetry_file = 'poetry/ecstasy.txt'
 
-# this variable has to be named 'application'
-application = service.Application("fastpoetry")
-
 # this will hold the services that combine to form the poetry server
 top_service = service.MultiService()
 
@@ -57,7 +54,10 @@ factory = PoetryFactory(poetry_service)
 tcp_service = internet.TCPServer(port, factory, interface=iface)
 tcp_service.setServiceParent(top_service)
 
-# this hooks the collection we just made to the application
+# this variable has to be named 'application'
+application = service.Application("fastpoetry")
+
+# this hooks the collection we made to the application
 top_service.setServiceParent(application)
 
 # at this point, the application is ready to go. when started by
