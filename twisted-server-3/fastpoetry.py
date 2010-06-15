@@ -30,6 +30,7 @@ class PoetryService(service.Service):
         self.poetry_file = poetry_file
 
     def startService(self):
+        service.Service.startService(self)
         self.poem = open(self.poetry_file).read()
         log.msg('loaded a poem from: %s' % (self.poetry_file,))
 
