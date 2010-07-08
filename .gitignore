@@ -1,2 +1,4 @@
+twistd.log*
+twistd.pid
 *.pyc
 _trial_temp
