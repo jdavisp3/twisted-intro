@@ -1,3 +1,5 @@
+# This is the Twisted Fast Poetry Server, version 3.0
+
 from zope.interface import implements
 
 from twisted.python import usage, log
