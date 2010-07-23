@@ -22,10 +22,11 @@ def my_generator():
 
 gen = my_generator()
 
-print gen.next()
-print gen.send(10)
-print gen.send(20)
-print gen.throw(Malfunction())
+print gen.next() # start the generator
+print gen.send(10) # send the value 10
+print gen.send(20) # send the value 20
+print gen.throw(Malfunction()) # raise an exception inside the generator
+
 try:
     gen.next()
 except StopIteration:
