@@ -219,6 +219,20 @@
          d="M 8.7185878,4.0337352 -2.2072895,0.01601326 8.7185884,-4.0017078 c -1.7454984,2.3720609 -1.7354408,5.6174519 -6e-7,8.035443 z"
          transform="matrix(-1.1,0,0,-1.1,-1.1,0)" />
     </marker>
+    <inkscape:perspective
+       id="perspective10619"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
+    <inkscape:perspective
+       id="perspective10619-5"
+       inkscape:persp3d-origin="0.5 : 0.33333333 : 1"
+       inkscape:vp_z="1 : 0.5 : 1"
+       inkscape:vp_y="0 : 1000 : 0"
+       inkscape:vp_x="0 : 0.5 : 1"
+       sodipodi:type="inkscape:persp3d" />
   </defs>
   <sodipodi:namedview
      id="base"
@@ -231,7 +245,7 @@
      inkscape:pageopacity="1"
      inkscape:pageshadow="2"
      inkscape:zoom="2"
-     inkscape:cx="221.68639"
+     inkscape:cx="183.50088"
      inkscape:cy="116.94389"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
@@ -340,50 +354,50 @@
          x="116.90566"
          y="266.01956"
          id="tspan8770">    handle_bad_things(arg2)</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Lend);display:inline"
-       d="M 458.40567,76.519753 C 434.7439,77.074313 399.29747,61.31608 351.57611,74.52464"
-       id="path7563-4-1"
-       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="461.90567"
-       y="81.019753"
+       x="409.99454"
+       y="81.519753"
        id="text7565-6-6"><tspan
          sodipodi:role="line"
-         x="461.90567"
-         y="81.019753"
+         x="409.99454"
+         y="81.519753"
          id="tspan6076">First Callback</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Lend);display:inline"
-       d="m 455.10254,140.24236 c -27.66177,-18.94544 -78.1082,-21.20367 -106.32956,-1.99511"
-       id="path7563-4-1-6"
-       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="458.60254"
-       y="144.74237"
+       x="411.69141"
+       y="156.74237"
        id="text7565-6-6-5"><tspan
          sodipodi:role="line"
-         x="458.60254"
-         y="144.74237"
+         x="411.69141"
+         y="156.74237"
          id="tspan6076-4">Second Callback</tspan></text>
-    <path
-       style="fill:none;stroke:#000000;stroke-width:1;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-opacity:1;stroke-dasharray:1, 1;stroke-dashoffset:0;marker-start:none;marker-end:url(#Arrow2Lend);display:inline"
-       d="m 459.10254,233.24236 c -36.16177,-5.44544 -52.1082,27.79633 -103.82956,7.50489"
-       id="path7563-4-1-7"
-       sodipodi:nodetypes="cc" />
     <text
        xml:space="preserve"
        style="font-size:12px;font-style:normal;font-variant:normal;font-weight:normal;font-stretch:normal;fill:#000000;fill-opacity:1;stroke:none;display:inline;font-family:Bitstream Charter;-inkscape-font-specification:Bitstream Charter"
-       x="462.60254"
-       y="237.74237"
+       x="410.10254"
+       y="238.74237"
        id="text7565-6-6-2"><tspan
          sodipodi:role="line"
-         x="462.60254"
-         y="237.74237"
+         x="410.10254"
+         y="238.74237"
          id="tspan6076-41">Third Callback</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 400.40566,55.003924 0,51.999996"
+       id="path10609"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 399.90566,134.50392 0,38"
+       id="path10609-3"
+       sodipodi:nodetypes="cc" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="m 398.40566,200.00392 0,67"
+       id="path10609-0"
+       sodipodi:nodetypes="cc" />
   </g>
 </svg>
