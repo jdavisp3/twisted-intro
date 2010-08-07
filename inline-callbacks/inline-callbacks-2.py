@@ -1,6 +1,5 @@
 
 from twisted.internet.defer import inlineCallbacks, Deferred, returnValue
-from twisted.internet.defer import DeferredList
 
 @inlineCallbacks
 def my_callbacks_1():
@@ -50,8 +49,16 @@ def run_callbacks():
     d2.addCallbacks(got_result, got_error)
 
     from twisted.internet import reactor
-    dlist = DeferredList([d1, d2])
-    dlist.addCallback(lambda r: reactor.stop())
+
+    def callbacks_finished(_):
+        callbacks_finished.count += 1
+        if callbacks_finished.count == 2:
+            print 'all done'
+            reactor.stop()
+    callbacks_finished.count = 0
+
+    d1.addBoth(callbacks_finished)
+    d2.addBoth(callbacks_finished)
 
 
 from twisted.internet import reactor
