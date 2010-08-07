@@ -157,8 +157,6 @@ def poetry_main():
 
     from twisted.internet import reactor
 
-    done = []
-
     @defer.inlineCallbacks
     def get_transformed_poem(host, port):
         try:
@@ -178,9 +176,10 @@ def poetry_main():
         print poem
 
     def poem_done(_):
-        done.append(None)
-        if len(done) == len(addresses):
+        poem_done.count += 1
+        if poem_done.count == len(addresses):
             reactor.stop()
+    poem_done.count = 0
 
     for address in addresses:
         host, port = address
