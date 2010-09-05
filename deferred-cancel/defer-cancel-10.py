@@ -25,6 +25,8 @@ def main():
     d = get_poem()
     d.addCallbacks(got_poem, poem_error)
 
+    reactor.callLater(2, d.cancel) # cancel after 2 seconds
+
     reactor.run()
 
 main()
