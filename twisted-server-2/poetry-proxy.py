@@ -16,7 +16,7 @@ This is the Poetry Proxy, version 2.0.
 If you are in the base directory of the twisted-intro package,
 you could run it like this:
 
-  python twisted-server-1/poetry-proxy.py 10000
+  python twisted-server-2/poetry-proxy.py 10000
 
 to proxy the poem for the server running on port 10000.
 """
