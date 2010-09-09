@@ -117,7 +117,7 @@ class ProxyService(object):
             return succeed(self.poem)
 
         def canceler(d):
-            print 'Canceling poem download'
+            print 'Canceling poem download.'
             factory.deferred = None
             connector.disconnect()
 
