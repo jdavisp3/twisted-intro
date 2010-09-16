@@ -75,14 +75,12 @@ collect(N, Poems) ->
 
 peername(Sock) ->
     {ok, {IP, Port}} = inet:peername(Sock),
-    format_ip(erlang:tuple_to_list(IP)) ++ ":" ++ erlang:integer_to_list(Port).
+    format_ip(IP) ++ ":" ++ erlang:integer_to_list(Port).
 
-format_ip([]) ->
-    [];
-format_ip([N]) ->
-    erlang:integer_to_list(N);
-format_ip([N|Ns]) ->
-    [erlang:integer_to_list(N),$:|format_ip(Ns)].
+format_ip(IP) when is_tuple(IP) ->
+    format_ip(erlang:tuple_to_list(IP));
+format_ip(IP) ->
+    string:join([erlang:integer_to_list(N) || N <- IP], ":").
 
 get_poetry(Tasknum, Addr, Main) ->
     {Host, Port} = Addr,
