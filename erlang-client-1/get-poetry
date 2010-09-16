@@ -4,6 +4,18 @@
 
 -module(compile).
 
+
+main([]) ->
+    usage();
+
+main(Args) ->
+    Addresses = parse_args(Args),
+    Main = self(),
+    [erlang:spawn_monitor(fun () -> get_poetry(TaskNum, Addr, Main) end)
+     || {TaskNum, Addr} <- enumerate(Addresses)],
+    collect_poems(length(Addresses), []).
+
+
 usage() ->
     io:format("usage: get-poetry [hostname]:port ...
 
@@ -24,6 +36,7 @@ for that to work.
 "),
     halt(1).
 
+
 parse_args(Args) ->
     try
         [parse_addr(Arg) || Arg <- Args]
@@ -31,6 +44,7 @@ parse_args(Args) ->
         _:_ ->
             usage()
     end.
+
 
 parse_addr(Addr) ->
     parse_addr(Addr, []).
@@ -52,24 +66,14 @@ enumerate([X|Xs], N) ->
     [{N, X} | enumerate(Xs, N+1)].
 
 
-main([]) ->
-    usage();
-
-main(Args) ->
-    Addresses = parse_args(Args),
-    Main = self(),
-    [erlang:spawn_monitor(fun () -> get_poetry(TaskNum, Addr, Main) end)
-     || {TaskNum, Addr} <- enumerate(Addresses)],
-    collect(length(Addresses), []).
-
-collect(0, Poems) ->
+collect_poems(0, Poems) ->
     [io:format("~s\n", [P]) || P <- Poems];
-collect(N, Poems) ->
+collect_poems(N, Poems) ->
     receive
         {'DOWN', _, _, _, _} ->
-            collect(N-1, Poems);
+            collect_poems(N-1, Poems);
         {poem, Poem} ->
-            collect(N, [Poem|Poems])
+            collect_poems(N, [Poem|Poems])
     end.
 
 
@@ -81,6 +85,7 @@ format_ip(IP) when is_tuple(IP) ->
     format_ip(erlang:tuple_to_list(IP));
 format_ip(IP) ->
     string:join([erlang:integer_to_list(N) || N <- IP], ":").
+
 
 get_poetry(Tasknum, Addr, Main) ->
     {Host, Port} = Addr,
