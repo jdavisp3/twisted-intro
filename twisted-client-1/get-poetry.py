@@ -90,9 +90,11 @@ class PoetrySocket(object):
 
         while True:
             try:
-                bytes += self.sock.recv(1024)
-                if not bytes:
+                bytesread = self.sock.recv(1024)
+                if not bytesread:
                     break
+                else:
+                    bytes += bytesread
             except socket.error, e:
                 if e.args[0] == errno.EWOULDBLOCK:
                     break
