@@ -66,8 +66,8 @@ collect_poems(N, Poems) ->
     end.
 
 
-peername(Sock) ->
-    {ok, {IP, Port}} = inet:peername(Sock),
+peername(Socket) ->
+    {ok, {IP, Port}} = inet:peername(Socket),
     format_ip(IP) ++ ":" ++ erlang:integer_to_list(Port).
 
 format_ip(IP) when is_tuple(IP) ->
@@ -78,16 +78,16 @@ format_ip(IP) ->
 
 get_poetry(Tasknum, Addr, Main) ->
     {Host, Port} = Addr,
-    {ok, Sock} = gen_tcp:connect(Host, Port,
-                                 [binary, {active, false}, {packet, 0}]),
-    get_poetry(Tasknum, Sock, Main, []).
+    {ok, Socket} = gen_tcp:connect(Host, Port,
+                                   [binary, {active, false}, {packet, 0}]),
+    get_poetry(Tasknum, Socket, Main, []).
 
-get_poetry(Tasknum, Sock, Main, Packets) ->
-    case gen_tcp:recv(Sock, 0) of
+get_poetry(Tasknum, Socket, Main, Packets) ->
+    case gen_tcp:recv(Socket, 0) of
         {ok, Packet} ->
             io:format("Task ~w: got ~w bytes of poetry from ~s\n",
-                      [Tasknum, size(Packet), peername(Sock)]),
-            get_poetry(Tasknum, Sock, Main, [Packet|Packets]);
+                      [Tasknum, size(Packet), peername(Socket)]),
+            get_poetry(Tasknum, Socket, Main, [Packet|Packets]);
         {error, _} ->
             Main ! {poem, list_to_binary(lists:reverse(Packets))}
     end.
