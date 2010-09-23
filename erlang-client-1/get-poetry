@@ -5,17 +5,6 @@
 -module(compile).
 
 
-main([]) ->
-    usage();
-
-main(Args) ->
-    Addresses = parse_args(Args),
-    Main = self(),
-    [erlang:spawn_monitor(fun () -> get_poetry(TaskNum, Addr, Main) end)
-     || {TaskNum, Addr} <- enumerate(Addresses)],
-    collect_poems(length(Addresses), []).
-
-
 usage() ->
     io:format("usage: get-poetry [hostname]:port ...
 
@@ -102,3 +91,14 @@ get_poetry(Tasknum, Sock, Main, Packets) ->
         {error, _} ->
             Main ! {poem, list_to_binary(lists:reverse(Packets))}
     end.
+
+
+main([]) ->
+    usage();
+
+main(Args) ->
+    Addresses = parse_args(Args),
+    Main = self(),
+    [erlang:spawn_monitor(fun () -> get_poetry(TaskNum, Addr, Main) end)
+     || {TaskNum, Addr} <- enumerate(Addresses)],
+    collect_poems(length(Addresses), []).
