@@ -31,9 +31,9 @@ parseServer arg
 getPoem :: (HostName, PortNumber) -> IO (MVar String)
 getPoem (host, port) = do
   mvar <- newEmptyMVar
-  _ <- forkIO $ (do h <- connectTo host (PortNumber $ port)
-                    poem <- hGetContents h
-                    putMVar mvar poem)
+  _ <- forkIO (do h <- connectTo host (PortNumber $ port)
+                  poem <- hGetContents h
+                  putMVar mvar poem)
   return mvar
 
 main :: IO ()
