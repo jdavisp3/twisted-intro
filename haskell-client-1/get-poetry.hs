@@ -37,9 +37,9 @@ parseServer arg
       to_port = fromIntegral . (read :: String -> Integer)
 
 makeTasks :: [String] -> [Task]
-makeTasks args = map makeTask $ zip args [1..]
+makeTasks args = zipWith makeTask args [1..]
     where
-      makeTask (arg, num) =
+      makeTask arg num =
           let (host, port) = parseServer arg
           in Task { taskNum = num,
                     taskHostname = host,
