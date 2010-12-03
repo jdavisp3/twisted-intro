@@ -22,18 +22,16 @@ to serve up John Donne's Ecstasy, which I know you want to do.
     parser = optparse.OptionParser(usage)
 
     help = "The port to listen on. Default to a random available port."
-    option = parser.add_option('--port', type='int', help=help)
+    parser.add_option('--port', type='int', help=help)
 
     help = "The interface to listen on. Default is localhost."
-    option = parser.add_option('--iface', help=help, default='localhost')
+    parser.add_option('--iface', help=help, default='localhost')
 
     help = "The number of seconds between sending bytes."
-    option = parser.add_option('--delay', type='float', help=help,
-                               default=.1)
+    parser.add_option('--delay', type='float', help=help, default=.1)
 
     help = "The number of bytes to send at a time."
-    option = parser.add_option('--num-bytes', type='int', help=help,
-                               default=10)
+    parser.add_option('--num-bytes', type='int', help=help, default=10)
 
     options, args = parser.parse_args()
 
