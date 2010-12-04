@@ -34,7 +34,7 @@ gets the first bits of a poem.
 
     def parse_address(addr):
         if ':' not in addr:
-            host = ''
+            host = '127.0.0.1'
             port = addr
         else:
             host, port = addr.split(':', 1)
