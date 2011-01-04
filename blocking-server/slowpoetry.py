@@ -79,7 +79,7 @@ def serve(listen_socket, poetry_file, num_bytes, delay):
 
         send_poetry(sock, poetry_file, num_bytes, delay)
 
-        
+
 def main():
     options, poetry_file= parse_args()
 
