@@ -1,3 +1,4 @@
 #!/bin/sh
 
-echo -e -n "27:cummingsify.HERE IS MY POEM,", | netcat localhost $1
+echo -n "27:cummingsify.HERE IS MY POEM," | netcat -q -1 localhost $1
+echo
