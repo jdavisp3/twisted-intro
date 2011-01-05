@@ -9,15 +9,15 @@ from twisted.protocols.basic import NetstringReceiver
 def parse_args():
     usage = """usage: %prog [options]
 
-This is the Poetry Tranform Server.
+This is the Poetry Transform Server.
 Run it like this:
 
-  python tranformedpoetry.py
+  python transformedpoetry.py
 
 If you are in the base directory of the twisted-intro package,
 you could run it like this:
 
-  python twisted-server-1/tranformedpoetry.py --port 11000
+  python twisted-server-1/transformedpoetry.py --port 11000
 
 to provide poetry transformation on port 11000.
 """
