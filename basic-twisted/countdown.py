@@ -4,7 +4,6 @@ class Countdown(object):
     counter = 5
 
     def count(self):
-        from twisted.internet import reactor
         if self.counter == 0:
             reactor.stop()
         else:
