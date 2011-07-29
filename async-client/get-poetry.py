@@ -66,12 +66,12 @@ def get_poetry(sockets):
         # rlist is the list of sockets with data ready to read
 
         for sock in rlist:
-            bytes = ''
+            data = ''
 
             while True:
                 try:
-                    bytes += sock.recv(1024)
-                    if not bytes:
+                    data += sock.recv(1024)
+                    if not data:
                         break
                 except socket.error, e:
                     if e.args[0] == errno.EWOULDBLOCK:
@@ -88,15 +88,15 @@ def get_poetry(sockets):
             task_num = sock2task[sock]
             addr_fmt = format_address(sock.getpeername())
 
-            if not bytes:
+            if not data:
                 sockets.remove(sock)
                 sock.close()
                 print 'Task %d finished' % task_num
             else:
                 msg = 'Task %d: got %d bytes of poetry from %s'
-                print  msg % (task_num, len(bytes), addr_fmt)
+                print  msg % (task_num, len(data), addr_fmt)
 
-            poems[sock] += bytes
+            poems[sock] += data
 
     return poems
 
