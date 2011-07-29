@@ -59,13 +59,13 @@ def get_poetry(address):
         # The recv() method will block for an indeterminate period
         # of time waiting for bytes to be received from the server.
 
-        bytes = sock.recv(1024)
+        data = sock.recv(1024)
 
-        if not bytes:
+        if not data:
             sock.close()
             break
 
-        poem += bytes
+        poem += data
 
     return poem
 
