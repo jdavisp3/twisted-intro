@@ -66,19 +66,15 @@ def get_poetry(sockets):
         # rlist is the list of sockets with data ready to read
 
         for sock in rlist:
-            data = ''
-
-            while True:
-                try:
-                    data += sock.recv(1024)
-                    if not data:
-                        break
-                except socket.error, e:
-                    if e.args[0] == errno.EWOULDBLOCK:
-                        # this error code means we would have
-                        # blocked if the socket was blocking.
-                        # instead we skip to the next socket
-                        break
+            try:
+                data = sock.recv(1024)
+            except socket.error, e:
+                if e.args[0] == errno.EWOULDBLOCK:
+                    # this error code means we would have
+                    # blocked if the socket was blocking.
+                    # instead we skip to the next socket
+                    data = ''
+                else:
                     raise
 
             # Each execution of this inner loop corresponds to
@@ -86,13 +82,13 @@ def get_poetry(sockets):
             # http://krondo.com/?p=1209#figure3
 
             task_num = sock2task[sock]
-            addr_fmt = format_address(sock.getpeername())
 
             if not data:
                 sockets.remove(sock)
                 sock.close()
                 print 'Task %d finished' % task_num
             else:
+                addr_fmt = format_address(sock.getpeername())
                 msg = 'Task %d: got %d bytes of poetry from %s'
                 print  msg % (task_num, len(data), addr_fmt)
 
