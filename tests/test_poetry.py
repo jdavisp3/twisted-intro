@@ -91,5 +91,5 @@ class PoetryTestCase(TestCase):
     def test_failure(self):
         """The correct failure is returned by get_poetry when
         connecting to a port with no server."""
-        d = get_poetry('127.0.0.1', -1)
+        d = get_poetry('127.0.0.1', 0)
         return self.assertFailure(d, ConnectionRefusedError)
