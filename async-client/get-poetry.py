@@ -66,16 +66,23 @@ def get_poetry(sockets):
         # rlist is the list of sockets with data ready to read
 
         for sock in rlist:
-            try:
-                data = sock.recv(1024)
-            except socket.error, e:
-                if e.args[0] == errno.EWOULDBLOCK:
-                    # this error code means we would have
-                    # blocked if the socket was blocking.
-                    # instead we skip to the next socket
-                    data = ''
-                else:
+            data = ''
+
+            while True:
+                try:
+                    new_data = sock.recv(1024)
+                except socket.error, e:
+                    if e.args[0] == errno.EWOULDBLOCK:
+                        # this error code means we would have
+                        # blocked if the socket was blocking.
+                        # instead we skip to the next socket
+                        break
                     raise
+                else:
+                    if not new_data:
+                        break
+                    else:
+                        data += new_data
 
             # Each execution of this inner loop corresponds to
             # working on one asynchronous task in Figure 3 here:
