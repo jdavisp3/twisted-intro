@@ -28,7 +28,7 @@ to serve up John Donne's Ecstasy, which I know you want to do.
     parser.add_option('--iface', help=help, default='localhost')
 
     help = "The number of seconds between sending bytes."
-    parser.add_option('--delay', type='float', help=help, default=.1)
+    parser.add_option('--delay', type='float', help=help, default=.7)
 
     help = "The number of bytes to send at a time."
     parser.add_option('--num-bytes', type='int', help=help, default=10)
