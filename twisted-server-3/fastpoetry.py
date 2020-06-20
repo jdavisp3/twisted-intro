@@ -9,7 +9,7 @@ from twisted.python import log
 class PoetryProtocol(Protocol):
 
     def connectionMade(self):
-        poem = self.factory.service.poem
+        poem = self.factory.service.poem.encode('utf8')
         log.msg('sending %d bytes of poetry to %s'
                 % (len(poem), self.transport.getPeer()))
         self.transport.write(poem)

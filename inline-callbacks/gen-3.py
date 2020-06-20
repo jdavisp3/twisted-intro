@@ -15,8 +15,8 @@ gens = [my_generator(), my_other_generator()]
 while gens:
     for g in gens[:]:
         try:
-            n = g.next()
+            n = next(g)
         except StopIteration:
             gens.remove(g)
         else:
-            print n
+            print(n)

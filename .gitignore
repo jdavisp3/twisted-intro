@@ -1,5 +1,11 @@
 twistd.log*
 twistd.pid
 *.pyc
+#
+# ignore answers to exercises
+# use a prefix of ex- to distinguish your answers
+ex-*.py
+
+*.py.bak
 _trial_temp
 twisted/plugins/dropin.cache

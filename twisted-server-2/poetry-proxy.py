@@ -4,6 +4,7 @@ import optparse
 
 from twisted.internet.defer import Deferred, succeed
 from twisted.internet.protocol import ClientFactory, ServerFactory, Protocol
+from twisted.python import log
 
 
 def parse_args():
@@ -54,6 +55,7 @@ class PoetryProxyProtocol(Protocol):
     def connectionMade(self):
         d = self.factory.service.get_poem()
         d.addCallback(self.transport.write)
+        d.addErrback(log.err)
         d.addBoth(lambda r: self.transport.loseConnection())
 
 
@@ -67,7 +69,7 @@ class PoetryProxyFactory(ServerFactory):
 
 class PoetryClientProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
@@ -107,13 +109,14 @@ class ProxyService(object):
 
     def get_poem(self):
         if self.poem is not None:
-            print 'Using cached poem.'
+            print('Using cached poem.')
             # return an already-fired deferred
             return succeed(self.poem)
 
-        print 'Fetching poem from server.'
+        print('Fetching poem from server.')
         factory = PoetryClientFactory()
         factory.deferred.addCallback(self.set_poem)
+        factory.deferred.addErrback(log.err)
         from twisted.internet import reactor
         reactor.connectTCP(self.host, self.port, factory)
         return factory.deferred
@@ -135,7 +138,7 @@ def main():
     port = reactor.listenTCP(options.port or 0, factory,
                              interface=options.iface)
 
-    print 'Proxying %s on %s.' % (server_addr, port.getHost())
+    print('Proxying %s on %s.' % (server_addr, port.getHost()))
 
     reactor.run()
 

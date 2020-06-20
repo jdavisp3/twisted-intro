@@ -5,25 +5,25 @@ from twisted.internet.defer import inlineCallbacks, Deferred
 def my_callbacks():
     from twisted.internet import reactor
 
-    print 'first callback'
+    print('first callback')
     result = yield 1 # yielded values that aren't deferred come right back
 
-    print 'second callback got', result
+    print('second callback got', result)
     d = Deferred()
     reactor.callLater(5, d.callback, 2)
     result = yield d # yielded deferreds will pause the generator
 
-    print 'third callback got', result # the result of the deferred
+    print('third callback got', result) # the result of the deferred
 
     d = Deferred()
     reactor.callLater(5, d.errback, Exception(3))
 
     try:
         yield d
-    except Exception, e:
+    except Exception as e:
         result = e
 
-    print 'fourth callback got', repr(result) # the exception from the deferred
+    print('fourth callback got', repr(result)) # the exception from the deferred
 
     reactor.stop()
 

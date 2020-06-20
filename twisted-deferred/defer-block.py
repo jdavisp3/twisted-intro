@@ -3,7 +3,7 @@ import sys, time
 from twisted.internet.defer import Deferred
 
 def start_chain(_):
-    print "The start of the callback chain."
+    print("The start of the callback chain.")
 
 def blocking_poem(_):
     def delayed_write(s, delay):
@@ -29,7 +29,7 @@ def blocking_poem(_):
     delayed_write('\n\n', 2)
 
 def end_chain(_):
-    print "The end of the callback chain."
+    print("The end of the callback chain.")
     from twisted.internet import reactor
     reactor.stop()
 
@@ -40,14 +40,14 @@ d.addCallback(blocking_poem)
 d.addCallback(end_chain)
 
 def fire():
-    print 'Firing deferred.'
+    print('Firing deferred.')
     d.callback(True)
-    print 'Firing finished.'
+    print('Firing finished.')
 
 from twisted.internet import reactor
 
 reactor.callWhenRunning(fire)
 
-print 'Starting reactor.'
+print('Starting reactor.')
 reactor.run()
-print 'Done.'
+print('Done.')

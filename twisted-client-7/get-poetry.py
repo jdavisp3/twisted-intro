@@ -32,7 +32,7 @@ ports for that to work.
     _, addresses = parser.parse_args()
 
     if len(addresses) < 2:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -47,12 +47,12 @@ ports for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetryProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
@@ -88,7 +88,10 @@ class TransformClientProtocol(NetstringReceiver):
         self.sendRequest(self.factory.xform_name, self.factory.poem)
 
     def sendRequest(self, xform_name, poem):
-        self.sendString(xform_name + '.' + poem)
+        # poem was already bytes
+        # change xform_name to bytes
+        # period seperator must also be a byte
+        self.sendString(xform_name.encode('utf8') + b'.' + poem)
 
     def stringReceived(self, s):
         self.transport.loseConnection()
@@ -163,19 +166,19 @@ def poetry_main():
     def get_transformed_poem(host, port):
         try:
             poem = yield get_poetry(host, port)
-        except Exception, e:
-            print >>sys.stderr, 'The poem download failed:', e
+        except Exception as e:
+            print('The poem download failed:', e, file=sys.stderr)
             raise
 
         try:
             poem = yield proxy.xform('cummingsify', poem)
-        except Exception:
-            print >>sys.stderr, 'Cummingsify failed!'
+        except Exception as e:
+            print('Cummingsify failed!', e, file=sys.stderr)
 
         defer.returnValue(poem)
 
     def got_poem(poem):
-        print poem
+        print(poem.decode('utf8'))
 
     def poem_done(_):
         results.append(_)

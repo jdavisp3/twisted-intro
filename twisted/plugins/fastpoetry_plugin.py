@@ -1,6 +1,6 @@
 # This is the Twisted Fast Poetry Server, version 3.0
 
-from zope.interface import implements
+from zope.interface import implementer
 
 from twisted.python import usage, log
 from twisted.plugin import IPlugin
@@ -13,7 +13,7 @@ from twisted.application import internet, service
 class PoetryProtocol(Protocol):
 
     def connectionMade(self):
-        poem = self.factory.service.poem
+        poem = self.factory.service.poem.encode('utf8')
         log.msg('sending %d bytes of poetry to %s'
                 % (len(poem), self.transport.getPeer()))
         self.transport.write(poem)
@@ -53,9 +53,8 @@ class Options(usage.Options):
 # Now we define our 'service maker', an object which knows
 # how to construct our service.
 
+@implementer(service.IServiceMaker, IPlugin)
 class PoetryServiceMaker(object):
-
-    implements(service.IServiceMaker, IPlugin)
 
     tapname = "fastpoetry"
     description = "A fast poetry service."

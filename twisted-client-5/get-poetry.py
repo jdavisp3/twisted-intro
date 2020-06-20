@@ -30,7 +30,7 @@ for that to work.
     _, addresses = parser.parse_args()
 
     if not addresses:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -45,12 +45,12 @@ for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetryProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
@@ -113,6 +113,7 @@ def cummingsify(poem):
     def bug():
         raise ValueError()
 
+    poem = poem.decode('utf8')
     return random.choice([success, gibberish, bug])()
 
 
@@ -130,15 +131,15 @@ def poetry_main():
         except GibberishError:
             raise
         except:
-            print 'Cummingsify failed!'
+            print('Cummingsify failed!')
             return poem
 
     def got_poem(poem):
-        print poem
+        print(poem)
         poems.append(poem)
 
     def poem_failed(err):
-        print >>sys.stderr, 'The poem download failed.'
+        print('The poem download failed.', file=sys.stderr)
         errors.append(err)
 
     def poem_done(_):

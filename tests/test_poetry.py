@@ -18,18 +18,18 @@ class PoetryServerFactory(ServerFactory):
     protocol = PoetryServerProtocol
 
     def __init__(self, poem):
-        self.poem = poem
+        self.poem = poem.encode('utf8')
 
 
 class PoetryClientProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
 
     def connectionLost(self, reason):
-        self.poemReceived(self.poem)
+        self.poemReceived(self.poem.decode('utf8'))
 
     def poemReceived(self, poem):
         self.factory.poem_finished(poem)
@@ -62,7 +62,8 @@ def get_poetry(host, port):
 
 TEST_POEM = '''\
 This is a test.
-This is only a test.'''
+This is only a test.
+…'''  # added a unicode ellipsis to include a non-ASCII character.
 
 
 class PoetryTestCase(TestCase):
@@ -82,7 +83,7 @@ class PoetryTestCase(TestCase):
         d = get_poetry('127.0.0.1', self.portnum)
 
         def got_poem(poem):
-            self.assertEquals(poem, TEST_POEM)
+            self.assertEqual(poem, TEST_POEM)
 
         d.addCallback(got_poem)
 

@@ -3,7 +3,7 @@ def falldown():
     raise Exception('I fall down.')
 
 def upagain():
-    print 'But I get up again.'
+    print('But I get up again.')
     reactor.stop()
 
 from twisted.internet import reactor
@@ -11,5 +11,5 @@ from twisted.internet import reactor
 reactor.callWhenRunning(falldown)
 reactor.callWhenRunning(upagain)
 
-print 'Starting the reactor.'
+print('Starting the reactor.')
 reactor.run()

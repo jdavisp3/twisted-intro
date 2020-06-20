@@ -30,7 +30,7 @@ for that to work.
     _, addresses = parser.parse_args()
 
     if not addresses:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -45,12 +45,12 @@ for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetryProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
@@ -72,7 +72,7 @@ class PoetryClientFactory(ClientFactory):
     def poem_finished(self, poem):
         if self.deferred is not None:
             d, self.deferred = self.deferred, None
-            d.callback(poem)
+            d.callback(poem.decode('utf8'))
 
     def clientConnectionFailed(self, connector, reason):
         if self.deferred is not None:
@@ -105,7 +105,7 @@ def poetry_main():
         poems.append(poem)
 
     def poem_failed(err):
-        print >>sys.stderr, 'Poem failed:', err
+        print('Poem failed:', err, file=sys.stderr)
         errors.append(err)
 
     def poem_done(_):
@@ -121,7 +121,7 @@ def poetry_main():
     reactor.run()
 
     for poem in poems:
-        print poem
+        print(poem)
 
 
 if __name__ == '__main__':

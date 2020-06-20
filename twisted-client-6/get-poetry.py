@@ -32,7 +32,7 @@ ports for that to work.
     _, addresses = parser.parse_args()
 
     if len(addresses) < 2:
-        print parser.format_help()
+        print(parser.format_help())
         parser.exit()
 
     def parse_address(addr):
@@ -47,12 +47,12 @@ ports for that to work.
 
         return host, int(port)
 
-    return map(parse_address, addresses)
+    return list(map(parse_address, addresses))
 
 
 class PoetryProtocol(Protocol):
 
-    poem = ''
+    poem = b''
 
     def dataReceived(self, data):
         self.poem += data
@@ -61,7 +61,7 @@ class PoetryProtocol(Protocol):
         self.poemReceived(self.poem)
 
     def poemReceived(self, poem):
-        self.factory.poem_finished(poem)
+        self.factory.poem_finished( str(poem, 'utf8') )
 
 
 class PoetryClientFactory(ClientFactory):
@@ -88,14 +88,14 @@ class TransformClientProtocol(NetstringReceiver):
         self.sendRequest(self.factory.xform_name, self.factory.poem)
 
     def sendRequest(self, xform_name, poem):
-        self.sendString(xform_name + '.' + poem)
+        self.sendString( bytes(xform_name + '.' + poem, 'utf8') )
 
     def stringReceived(self, s):
         self.transport.loseConnection()
         self.poemReceived(s)
 
     def poemReceived(self, poem):
-        self.factory.handlePoem(poem)
+        self.factory.handlePoem(str(poem, 'utf8'))
 
 
 class TransformClientFactory(ClientFactory):
@@ -164,17 +164,16 @@ def poetry_main():
         d = proxy.xform('cummingsify', poem)
 
         def fail(err):
-            print >>sys.stderr, 'Cummingsify failed!'
+            print('Cummingsify failed!', file=sys.stderr)
             return poem
 
         return d.addErrback(fail)
 
     def got_poem(poem):
-        print poem
         poems.append(poem)
 
     def poem_failed(err):
-        print >>sys.stderr, 'The poem download failed.'
+        print('The poem download failed.', file=sys.stderr)
         errors.append(err)
 
     def poem_done(_):
@@ -190,6 +189,10 @@ def poetry_main():
 
     reactor.run()
 
+    for poem in poems:
+        print(poem)
+    for error in errors:
+        print(error)
 
 if __name__ == '__main__':
     poetry_main()

@@ -45,7 +45,7 @@ to serve up John Donne's Ecstasy, which I know you want to do.
 class PoetryProtocol(Protocol):
 
     def connectionMade(self):
-        self.transport.write(self.factory.poem)
+        self.transport.write(self.factory.poem.encode('utf8'))
         self.transport.loseConnection()
 
 
@@ -69,7 +69,7 @@ def main():
     port = reactor.listenTCP(options.port or 0, factory,
                              interface=options.iface)
 
-    print 'Serving %s on %s.' % (poetry_file, port.getHost())
+    print('Serving %s on %s.' % (poetry_file, port.getHost()))
 
     reactor.run()
 

@@ -3,4 +3,9 @@ and asynchronous programming in Python located here:
 
   http://krondo.com/?page_id=1327
 
-Dave Peticolas <dave@krondo.com>
+The files were originally written for Python 2, but some have 
+been converted to Python 3 syntax. Twisted supports both, though
+future versions of Twisted will be Python 3 only.
+
+Originally by Dave Peticolas <dave@krondo.com>
+Converted to Python 3 by lkvam@venix.com

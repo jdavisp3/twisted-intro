@@ -1,7 +1,7 @@
 from twisted.internet.defer import Deferred
 
 def send_poem(d):
-    print 'Sending poem'
+    print('Sending poem')
     d.callback('Once upon a midnight dreary')
 
 def get_poem():
@@ -13,10 +13,10 @@ def get_poem():
 
 
 def got_poem(poem):
-    print 'I got a poem:', poem
+    print('I got a poem:', poem)
 
 def poem_error(err):
-    print 'get_poem failed:', err
+    print('get_poem failed:', err)
 
 def main():
     from twisted.internet import reactor
